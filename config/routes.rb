@@ -1,5 +1,8 @@
 AwlDev::Application.routes.draw do
 
+  resources :supports
+
+
   resources :rewards
 
 
