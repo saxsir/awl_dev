@@ -13,3 +13,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore bundle
+/vendor/bundle
+
+# Ignore temp file
+*.swp
+*~
+#*#
+
