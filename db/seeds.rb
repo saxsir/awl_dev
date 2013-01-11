@@ -16,6 +16,7 @@ User.connection.execute("delete from sqlite_sequence where name='users'")
     u.email = "awl_dev+user#{i + 1}@gmail.com"
     u.password = "userpass"
     u.password_confirmation = "userpass"
+    u.artist = false
   end
 end
 
