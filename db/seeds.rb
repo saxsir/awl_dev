@@ -31,6 +31,7 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
     p.target_amount = 1000000
     p.url = ""
     p.user_id = i + 1
+    p.payment_tag = "kara"
   end
 end
 

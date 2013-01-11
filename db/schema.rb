@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108111449) do
+ActiveRecord::Schema.define(:version => 20130111123151) do
+
+  create_table "order_transactions", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "title"
@@ -21,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130108111449) do
     t.integer  "total_amount"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.text     "payment_tag"
   end
 
   create_table "rewards", :force => true do |t|

@@ -25,6 +25,11 @@
   <%= @project.total_amount %>
 </p>
 
+<p>
+  <b>決済</b>
+</p>
 
+  <%=raw @project.payment_tag %>
+<br>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
