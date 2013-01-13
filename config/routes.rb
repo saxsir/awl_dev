@@ -1,5 +1,7 @@
 AwlDev::Application.routes.draw do
 
+  devise_for :admin_users
+
   resources :supports
 
 

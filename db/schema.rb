@@ -11,19 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111132025) do
+ActiveRecord::Schema.define(:version => 20130113081355) do
 
-  create_table "order_transactions", :force => true do |t|
-    t.integer  "order_id"
-    t.string   "action"
-    t.integer  "amount"
-    t.boolean  "success"
-    t.string   "authorization"
-    t.string   "message"
-    t.text     "params"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "admin_users", :force => true do |t|
+    t.string   "email",               :default => "", :null => false
+    t.string   "encrypted_password",  :default => "", :null => false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
+
+  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
 
   create_table "projects", :force => true do |t|
     t.string   "title"
@@ -35,6 +38,19 @@ ActiveRecord::Schema.define(:version => 20130111132025) do
     t.datetime "updated_at",    :null => false
     t.text     "payment_tag"
   end
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "rewards", :force => true do |t|
     t.integer  "project_id"
