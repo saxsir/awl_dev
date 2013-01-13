@@ -1,21 +1,19 @@
 AwlDev::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  root :to => "home#index"
+
+  devise_for :users
 
   devise_for :admin_users
-
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  
   resources :supports
 
-
   resources :rewards
-
 
   resources :projects
 
 
-  root :to => "home#index"
-
-  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
