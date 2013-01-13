@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*- 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -32,7 +33,20 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
     p.target_amount = 1000000
     p.url = ""
     p.user_id = i + 1
-    p.payment_tag = "kara"
+    p.payment_tag = '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="4ZFXVTD83UMRG">
+    <table>
+    <tr><td><input type="hidden" name="on0" value="リワード">リワード</td></tr><tr><td><select name="os0">
+      <option value="オプション1">オプション1 ¥1,000 JPY</option>
+        <option value="オプション2">オプション2 ¥1,000 JPY</option>
+          <option value="オプション1+2">オプション1+2 ¥2,000 JPY</option>
+          </select> </td></tr>
+          </table>
+          <input type="hidden" name="currency_code" value="JPY">
+          <input type="image" src="https://www.sandbox.paypal.com/ja_JP/JP/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - オンラインでより安全・簡単にお支払い">
+          <img alt="" border="0" src="https://www.sandbox.paypal.com/ja_JP/i/scr/pixel.gif" width="1" height="1">
+          </form>'
   end
 end
 
@@ -59,4 +73,11 @@ Support.connection.execute("delete from sqlite_sequence where name='supports'")
     s.reward_id = i + 1
     s.user_id = i + 1
   end
+end
+
+AdminUser.delete_all
+AdminUser.create! do |a|
+  a.email = "awl.developer+admin@gmail.com"
+  a.password = "moguraotaku"
+  a.password_confirmation = "moguraotaku"
 end

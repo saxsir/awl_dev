@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(:version => 20130113085612) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
 
+  create_table "order_transactions", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
