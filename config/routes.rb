@@ -11,9 +11,9 @@ AwlDev::Application.routes.draw do
 
   resources :rewards
 
+  get 'projects/thanks' => 'projects#thanks'
+  
   resources :projects
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

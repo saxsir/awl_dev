@@ -32,12 +32,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/1/edit
+   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
   end
 
-  # POST /projects
+ # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
@@ -80,4 +80,11 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /projects/thanks
+  def thanks
+  end
 end
+
+
+

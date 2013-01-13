@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h2>Project Home</h2>
 <p>
   <b>Title:</b>
   <%= @project.title %>
@@ -25,11 +25,37 @@
   <%= @project.total_amount %>
 </p>
 
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+<h2>リワード選択</h2>
+
+<p>リワード一覧</p>
+
+<p>ログイン状態:
+  <%= current_user.email if current_user %>
+</p>
+
+<% unless current_user then %>
+<p>個人情報フォーム</p>
+<p>ログインボタン</p>
+<% end %>
+
+<p>プロジェクトの推薦文</p>
+
+<p>利用規約に同意:
+  <input type = "checkbox">
+</p>
+
 <p>
   <b>決済</b>
 </p>
+<p>購入ボタン：
+  <%= raw @project.payment_tag %>
+</p>  
 
-  <%=raw @project.payment_tag %>
-<br>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<h2>内容の確認</h2>
+<p>入力した情報</p>
+<p>Paypalへのリンク</p>
+
+
