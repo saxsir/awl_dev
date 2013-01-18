@@ -7,25 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header id="pg-header">
-    <h1>awl</h1>
-    <nav>
-      <ul>
-	<li><%= link_to 'projects', projects_path %></li>
-	<li><%= link_to 'about us', about_path %></li>
-	
-	<% if user_signed_in? %>
-	<li>
-	  <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
-	</li>
-	<li></li>
-	
-	<% else %>
-	<li><%= link_to 'Login', new_user_session_path %></li>
-	<li><%= link_to 'sign up', new_user_registration_path %></li>
-	<% end %>
-      </ul>
-    </nav>
+  <header>
+    <div id="header-inner" class="clearfix">
+      <h1>awl</h1>
+      <nav>
+	<ul>
+	  <li><%= link_to 'projects', projects_path %></li>
+	  <li><%= link_to 'about us', about_path %></li>
+	  
+	  <% if user_signed_in? %>
+	  <li>
+	    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+	  </li>
+	  <li></li>
+	  
+	  <% else %>
+	  <li><%= link_to 'Login', new_user_session_path %></li>
+	  <li><%= link_to 'sign up', new_user_registration_path %></li>
+	  <% end %>
+	</ul>
+      </nav>
+    </div>
   </header>
   
   <section id="wrapper">
