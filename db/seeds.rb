@@ -14,6 +14,7 @@ User.connection.execute("delete from sqlite_sequence where name='users'")
 10.times do |i|
   User.create! do |u|
     # user_1 ~ user_10
+    u.username = "user#{i}"
     u.email = "awl_dev+user#{i + 1}@gmail.com"
     u.password = "userpass"
     u.password_confirmation = "userpass"
