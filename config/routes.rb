@@ -1,8 +1,5 @@
+# -*- coding: utf-8 -*-
 AwlDev::Application.routes.draw do
-
-  get "mypage/index"
-
-  get "mypage/edit"
 
   root :to => "home#index"
 
@@ -15,9 +12,13 @@ AwlDev::Application.routes.draw do
 
   resources :rewards
 
-  get 'projects/thanks' => 'projects#thanks'
-  
+  # thanksを上に書かないと、show/:id とコンフリクトする
+  get 'projects/thanks' => 'projects#thanks'  
   resources :projects
+
+  get ':username' => 'mypage#index'
+  get ':username/edit' => 'mypage#edit'
+  get ':username/error' => 'mypage#error'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
