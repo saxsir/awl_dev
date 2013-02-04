@@ -18,9 +18,9 @@ AwlDev::Application.routes.draw do
   get 'projects/thanks' => 'projects#thanks'  
   resources :projects
 
-  get ':username' => 'mypage#index'
-  get ':username/edit' => 'mypage#edit'
-  get ':username/error' => 'mypage#error'
+  get '/:username' => 'mypage#index', :as => 'mypage_index'
+  get '/:username/edit' => 'mypage#edit'
+  get '/:username/error' => 'mypage#error'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
