@@ -11,15 +11,37 @@
 User.delete_all
 User.connection.execute("delete from sqlite_sequence where name='users'")
 
-10.times do |i|
-  User.create! do |u|
-    # user_1 ~ user_10
-    u.username = "user#{i}"
-    u.email = "awl_dev+user#{i + 1}@gmail.com"
-    u.password = "userpass"
-    u.password_confirmation = "userpass"
-    u.artist = false
-  end
+User.create! do |u|
+  u.username = "user"
+  u.email = "awl_dev+user@gmail.com"
+  u.password = "userpass"
+  u.password_confirmation = "userpass"
+  u.artist = false
+end
+
+User.create! do |u|
+  u.username = "artist"
+  u.email = "awl_dev+artist@gmail.com"
+  u.password = "artistpass"
+  u.password_confirmation = "artistpass"
+  u.artist = false
+end
+
+
+User.create! do |u|
+  u.username = "nikezono"
+  u.email = "awl_dev+nikezono@gmail.com"
+  u.password = "nikezono"
+  u.password_confirmation = "nikezono"
+  u.artist = true
+end
+
+User.create! do |u|
+  u.username = "saxsir"
+  u.email = "awl_dev+saxsir@gmail.com"
+  u.password = "saxsir"
+  u.password_confirmation = "saxsir"
+  u.artist = false
 end
 
 
