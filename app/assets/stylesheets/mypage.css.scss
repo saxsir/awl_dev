@@ -1,3 +1,28 @@
 // Place all the styles related to the mypage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div#about-user-wrapper {
+  background-color:rgb(245,252,200);
+  float:left;
+  width:20%;
+}
+
+section#content-wraper {
+  background-color:rgb(222,153,120);
+  margin-left:20px;
+  width:70%;
+  float:left;
+  .project {
+    .project-left {
+      float:left;
+      
+      .thumbnail img{
+        width:150px;
+        height:150px;
+      }
+    }
+    .project-right {
+      float:left;
+    }
+  }
+}

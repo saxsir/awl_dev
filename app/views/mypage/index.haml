@@ -1,0 +1,29 @@
+#about-user-wrapper
+  %h2#username
+    =@user.username
+    <img src="http://web.sfc.keio.ac.jp/~s10363ss/test.jpg" alt="ユーザー写真">
+  %p#supported-project
+    %a(href="#" title="支援したプロジェクト")<
+      支援したプロジェクト
+  %p#about-user
+    %a(href="#" title="ユーザー情報")<
+      ユーザー情報
+%section#content-wraper
+  %h2
+    支援したプロジェクト
+  .project
+    .project-left
+      .thumbnail
+        <img src="http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg" alt="プロジェクトサムネイル">
+      %p.project-title
+        プロジェクトタイトル
+    .project-right
+      %p
+        現在のプロジェクトの状況
+      %p
+        プロジェクト期間中／終了
+      %p
+        コメント
+      %textarea
+      %p
+        コメントを編集する
