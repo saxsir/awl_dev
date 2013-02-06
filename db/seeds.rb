@@ -55,7 +55,7 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
     p.total_amount = 100000
     p.target_amount = 1000000
     p.url = ""
-    p.image_url = 'http://moka-suyasuya.c.blog.so-net.ne.jp/_images/blog/_cd5/moka-suyasuya/gazou2044-fc29e.jpg?c=a0'
+    p.image_url = 'http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg'
     p.user_id = i + 1
     p.payment_tag = '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_s-xclick">
