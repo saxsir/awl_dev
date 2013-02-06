@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = Project.find([1,2,3,4,5])
     respond_to do |format|
       format.html # index.haml
     end
