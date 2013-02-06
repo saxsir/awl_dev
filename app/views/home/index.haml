@@ -1,0 +1,18 @@
+#grid
+  %h1
+    AwlDev
+  %br
+  %h2
+    PickUp Projects
+  %section.pickup-project
+  - @projects.each do |project|
+    .item
+      %h4= project.title
+      %img{:src => project.image_url}
+      %p
+        目標金額:
+        =project.target_amount
+        %br
+        現在金額:
+        =project.total_amount
+
