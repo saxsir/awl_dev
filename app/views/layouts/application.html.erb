@@ -7,27 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="50">
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-              <%= link_to 'AWL', root_path, :class => 'brand' %>
-            <div class="nav-collapse" id="main-menu">
-	            <ul class="nav" id="main-menu-left">
-	              <li><%= link_to 'projects', projects_path %></li>
-	              <li><%= link_to 'about us', about_path %></li> 
-	              <% if user_signed_in? %>
-								<li><%= link_to 'Mypage', mypage_index_path %></li>
-								<li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
-	              <li></li>
-	              <% else %>
-	              <li><%= link_to 'Login', new_user_session_path %></li>
-	              <li><%= link_to 'sign up', new_user_registration_path %></li>
-	              <% end %>
-	            </ul>
-            </div>
-          </div>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to 'AWL', root_path, :class => 'brand' %>
+        <div class="nav-collapse" id="main-menu">
+	        <ul class="nav" id="main-menu-left">
+	          <li><%= link_to 'projects', projects_path %></li>
+	          <li><%= link_to 'about us', about_path %></li> 
+	          <% if user_signed_in? %>
+						  <li><%= link_to 'Mypage', mypage_index_path %></li>
+							<li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+	            <li></li>
+	          <% else %>
+	            <li><%= link_to 'Login', new_user_session_path %></li>
+	            <li><%= link_to 'sign up', new_user_registration_path %></li>
+	          <% end %>
+	        </ul>
         </div>
       </div>
+    </div>
+  </div>
   
   <section class="container">
     <%= yield %>
