@@ -13,6 +13,18 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'therubyracer'
 
+#production/development
+#プロダクションモードではsqlite3を使うのは推奨されない
+#一応コメントにしておく
+=begin
+grop :production do
+  gem 'pg'
+end
+group :development, :test do
+  gem 'sqlite3'
+end
+=end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
