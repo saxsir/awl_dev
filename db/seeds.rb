@@ -51,7 +51,7 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
 
 10.times do |i|
   Project.create! do |p|
-    p.title = ""
+    p.title = "project#{i}"
     p.total_amount = 100000
     p.target_amount = 1000000
     p.url = ""
