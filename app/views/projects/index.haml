@@ -1,11 +1,9 @@
-
 #grid
-  %h1 
-  プロジェクト一覧
+  %h1
+    プロジェクト一覧
   %br
   %button
     = link_to 'New Project', new_project_path
-  %br
   - @projects.each do |project|
     .item
       %h4= project.title
