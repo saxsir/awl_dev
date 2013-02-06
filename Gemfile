@@ -8,7 +8,10 @@ gem 'rails', '3.2.11'
 gem 'sqlite3'
 gem 'devise'
 gem 'rails_admin'
-gem 'twitter-bootstrap-rails',:git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,7 +25,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
