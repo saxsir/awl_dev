@@ -16,9 +16,9 @@
 	          <li><%= link_to 'projects', projects_path %></li>
 	          <li><%= link_to 'about us', about_path %></li> 
 	          <% if user_signed_in? %>
-		  <li><%= link_to 'Mypage', mypage_index_path(:username => current_user.username) %></li>
-							<li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
-	            <li></li>
+		  <li><%= link_to 'Mypage', mypage_index_path %></li>
+		  <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+	          <li></li>
 	          <% else %>
 	            <li><%= link_to 'Login', new_user_session_path %></li>
 	            <li><%= link_to 'sign up', new_user_registration_path %></li>
