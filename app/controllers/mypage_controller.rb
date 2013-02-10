@@ -2,7 +2,7 @@
 class MypageController < ApplicationController
   before_filter :authenticate_user!
 
-  # GET /:username
+  # GET /mypage/:username
   def index
     @user = User.find(:all, :conditions => ['username = ?', params[:username]])
     
@@ -18,12 +18,12 @@ class MypageController < ApplicationController
     end
   end
 
-  # GET /:username/edit
+  # GET /mypage/:username/edit
   def edit
     
   end
 
-  # GET /:username/error
+  # GET /mypage/:username/error
   def error
     
   end
