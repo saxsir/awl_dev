@@ -12,7 +12,14 @@
  *= require scaffolds.css
  *= require_tree .
  */
- body {
-   padding-top:80px;
-   padding-bottom:20px
+
+/* Top Padding for responsive navbar-top-fixed */
+body { /* Add top padding for full-width layout */
+  padding-top: 60px;
+  padding-bottom: 40px;
  }
+@media (max-width: 979px) {
+  body { /* Remove top padding when top navbar goes static */
+    padding-top: 0;
+  }
+}
