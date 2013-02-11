@@ -8,10 +8,7 @@ gem 'rails', '3.2.11'
 gem 'sqlite3'
 gem 'devise'
 gem 'rails_admin'
-gem 'twitter-bootstrap-rails'
-gem 'haml-rails'
-gem 'jquery-rails'
-gem 'therubyracer'
+
 
 #production/development
 #プロダクションモードではsqlite3を使うのは推奨されない
@@ -32,9 +29,13 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'jquery-rails'
+  gem 'twitter-bootstrap-rails'
+  gem 'haml-rails'
 end
 
 
@@ -45,7 +46,7 @@ end
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+ 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
