@@ -1,0 +1,13 @@
+.span3
+  %h2 ログイン
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = f.label :login
+    = f.text_field :login , {:class => 'span3'}
+    = f.label :password
+    = f.password_field :password , {:class => 'span3'}
+    - if devise_mapping.rememberable?
+      = f.check_box :remember_me
+      = f.label :remember_me
+    = f.submit "Sign in", {:class => 'btn btn-primary pull-right'}
+.clearfix
+= render "users/shared/links"

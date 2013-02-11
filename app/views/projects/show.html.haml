@@ -1,0 +1,40 @@
+%p#notice= notice
+%h2 Project Home
+%p
+  %b Title:
+  = @project.title
+%p
+  %b User:
+  = @project.user_id
+%p
+  %b Url:
+  = @project.url
+%p
+  %b Target amount:
+  = @project.target_amount
+%p
+  %b Total amount:
+  = @project.total_amount
+= link_to 'Edit', edit_project_path(@project)
+|
+\#{link_to 'Back', projects_path}
+%h2 リワード選択
+%p リワード一覧
+%p
+  ログイン状態:
+  \#{current_user.email if current_user}
+- unless current_user then
+  %p 個人情報フォーム
+  %p ログインボタン
+%p プロジェクトの推薦文
+%p
+  利用規約に同意:
+  %input{:type => "checkbox"}/
+%p
+  %b 決済
+%p
+  購入ボタン：
+  \#{raw @project.payment_tag}
+%h2 内容の確認
+%p 入力した情報
+%p Paypalへのリンク
