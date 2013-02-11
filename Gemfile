@@ -9,6 +9,9 @@ gem 'sqlite3'
 gem 'devise'
 gem 'rails_admin'
 
+group :development do
+  gem 'erb2haml'
+end
 
 #production/development
 #プロダクションモードではsqlite3を使うのは推奨されない
