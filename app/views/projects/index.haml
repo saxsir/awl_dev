@@ -1,9 +1,13 @@
+%h1
+  プロジェクト一覧
+%br
+%button
+  = link_to 'New Project', new_project_path
+
+%h3
+  New Arrival & Hot Project
+
 #grid
-  %h1
-    プロジェクト一覧
-  %br
-  %button
-    = link_to 'New Project', new_project_path
   - @projects.each do |project|
     .item
       %h4= project.title

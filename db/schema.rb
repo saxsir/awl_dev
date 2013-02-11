@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130211100416) do
     t.text     "payment_tag"
     t.text     "image_url"
     t.text     "headline"
+    t.boolean  "slideshow"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
