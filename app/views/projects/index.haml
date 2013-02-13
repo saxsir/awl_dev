@@ -1,11 +1,11 @@
-%h1
-  プロジェクト一覧
-%br
-%button
-  = link_to 'New Project', new_project_path
-
 %h3
   New Arrival & Hot Project
+
+- @projects.each do |project| 
+  - if project.slideshow? then #こういう書き方合ってるんかね？
+      %h3= project.title
+      %p= project.headline
+      %img{:src => project.image_url}
 
 #grid
   - @projects.each do |project|
