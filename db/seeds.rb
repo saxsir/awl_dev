@@ -72,6 +72,7 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
           <img alt="" border="0" src="https://www.sandbox.paypal.com/ja_JP/i/scr/pixel.gif" width="1" height="1">
           </form>'
      p.headline="headline"
+     p.slideshow = true if i%3 == 0 # とりあえず３つくらい
   end
 end
 
