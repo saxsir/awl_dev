@@ -6,13 +6,15 @@
     PickUp Projects
   %section.pickup-project
   - @projects.each do |project|
-    .item
-      %h4= project.title
-      %img{:src => project.image_url}
-      %p
-        目標金額:
-        =project.target_amount
-        %br
-        現在金額:
-        =project.total_amount
+    - if project.slideshow? #projects#indexのNew&Hotと同じ扱いでいいのだろうか？
+      .item
+        = link_to project do
+          %h4= project.title
+          %img{:src => project.image_url, :alt =>project.title}
+        %p
+          目標金額:
+          =project.target_amount
+          %br
+          現在金額:
+          =project.total_amount
 
