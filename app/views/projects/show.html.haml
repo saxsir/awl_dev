@@ -1,40 +1,50 @@
 %p#notice= notice
-%h2 Project Home
-%p
-  %b Title:
-  = @project.title
-%p
-  %b User:
-  = @project.user_id
-%p
-  %b Url:
-  = @project.url
-%p
-  %b Target amount:
-  = @project.target_amount
-%p
-  %b Total amount:
-  = @project.total_amount
-= link_to 'Edit', edit_project_path(@project)
-|
-\#{link_to 'Back', projects_path}
-%h2 リワード選択
-%p リワード一覧
-%p
-  ログイン状態:
-  \#{current_user.email if current_user}
-- unless current_user then
-  %p 個人情報フォーム
-  %p ログインボタン
-%p プロジェクトの推薦文
-%p
-  利用規約に同意:
-  %input{:type => "checkbox"}/
-%p
-  %b 決済
-%p
-  購入ボタン：
-  \#{raw @project.payment_tag}
-%h2 内容の確認
-%p 入力した情報
-%p Paypalへのリンク
+%div.row-fluid
+  %div.span12
+    %h2<
+      =@project.title
+  %div.row-fluid
+    %div.span8
+      %h3>
+        Thumbnails
+      %div.thumbnails-wrap
+        %ul.thumbnails
+          %li.span3
+            %img{:src => @project.image_url, :alt =>"#{@project.title}", :class => "img-polaroid"}
+          %li.span3
+            %img{:src => @project.image_url, :alt =>"#{@project.title}", :class => "img-polaroid"}
+          %li.span3
+            %img{:src => @project.image_url, :alt =>"#{@project.title}", :class => "img-polaroid"}
+          %li.span3
+            %img{:src => @project.image_url, :alt =>"#{@project.title}", :class => "img-polaroid"}
+      / #これarticleでいいかな
+      %article.project-detail
+        %h3>
+          Project Detail
+        %p
+          =@project.headline
+      %div.comment
+        %h3>
+          Partner&Comment
+          %p
+            テストパラグラフテストパラグラフテストパラグラフ |
+            テストパラグラフテストパラグラフテストパラグラフ |
+            テストパラグラフテストパラグラフテストパラグラフ
+    %div.span4
+      %div.support
+        %ul.thumbnails
+          %li.span8
+            %img{:src => @project.image_url, :alt => "#{@project.title}", :class => "img-polaroid"}
+        %button{:class => "btn btn-success", :type => "button"}>
+          このプロジェクトを支援
+      %div.reward
+        %h3>
+          Reward
+        %ul
+        -@project.rewards.each do |reward|
+          %li
+            =reward.title
+            %p
+              =reward.description
+
+
