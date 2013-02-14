@@ -1,19 +1,25 @@
-%p
-  手続きページ
-
 .row
   .span12
     %h4
       プロジェクト立ち上げ：
       = @project.user.username
-    %h2= @project.title
+    %h2
+      = @project.title
+      を支援する
 
-    .rewards
-      - @project.rewards.each do |reward|
-        %p
-          = reward.id
-          %img{:src => reward.image_url}
-          %b
-            = reward.title
-          = reward.description
+    -#
+      とりあえずグリッドレイアウトでリワードを並べる
+      が、この中がどうなるのかはレイアウトに書いてない
+      個人的にはグリッドレイアウト＋divを選択、がいいと思う
+
+    #grid.rewards
+    %h3
+      リワード選択
+    - @project.rewards.each do |reward|
+      .item
+        %h5
+          reward.title
+        %img{:src => reward.image_url}
+        %p= reward.description
+        %p= reward.amount
 
