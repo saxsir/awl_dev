@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130214112914) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "image_url"
+    t.integer  "amount", :null => false
   end
 
   create_table "supports", :force => true do |t|

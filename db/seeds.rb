@@ -86,6 +86,7 @@ Reward.connection.execute("delete from sqlite_sequence where name='rewards'")
     r.project_id = i + 1
     r.title = "sample"
     r.image_url = "http://web.sfc.keio.ac.jp/~t10643sn/sign_ball.jpeg"
+    r.amount = i * 1000
   end
 end
 
