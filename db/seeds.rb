@@ -52,11 +52,13 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
 10.times do |i|
   Project.create! do |p|
     p.title = "project#{i}"
-    p.total_amount = 100000
-    p.target_amount = 1000000
+    p.total_amount = 10000 * 1
+    p.target_amount = 1000000 * i
     p.url = ""
     p.image_url = 'http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg'
     p.user_id = i + 1
+
+    #ここでpayment_tagを生成するアルゴリズムを書く
     p.payment_tag = '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="4ZFXVTD83UMRG">
@@ -71,7 +73,7 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
           <input type="image" src="https://www.sandbox.paypal.com/ja_JP/JP/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - オンラインでより安全・簡単にお支払い">
           <img alt="" border="0" src="https://www.sandbox.paypal.com/ja_JP/i/scr/pixel.gif" width="1" height="1">
           </form>'
-     p.headline="headline"
+     p.headline="見出し文"
      p.slideshow = true if i%3 == 0 # とりあえず３つくらい
   end
 end
@@ -82,9 +84,11 @@ Reward.connection.execute("delete from sqlite_sequence where name='rewards'")
 
 10.times do |i|
   Reward.create! do |r|
-    r.description = "hogehoge"
+    r.description = "こんなリワードです"
     r.project_id = i + 1
-    r.title = "sample"
+    r.title = "リワード名"
+    r.image_url = "http://web.sfc.keio.ac.jp/~t10643sn/sign_ball.jpeg"
+    r.amount = j * 1000 + 1000
   end
 end
 

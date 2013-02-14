@@ -21,6 +21,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # GET /projects/1/procedure
+  def procedure
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html #procedure.haml
+      format.json { render json: @project }
+    end
+  end
+
+
   # GET /projects/new
   # GET /projects/new.json
   def new
