@@ -49,7 +49,7 @@ end
 # gem 'jbuilder'
 
 # Use unicorn as the app server
- 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
