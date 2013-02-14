@@ -2,19 +2,20 @@
 %html
   %head
     %title AwlDev
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+    = csrf_meta_tags
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
-    = csrf_meta_tags
   %body.preview{"data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
+    %div.navbar.navbar-fixed-top
+      %div.navbar-inner
+        %div.container
           %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
           = link_to 'AWL', root_path, :class => 'brand'
-          #main-menu.nav-collapse
+          %header#main-menu.nav-collapse
             %ul#main-menu-left.nav
               %li= link_to 'projects', projects_path
               %li= link_to 'about us', about_path
@@ -34,5 +35,5 @@
                 <li><a href="#">Another action</a></li>
                 </ul>
                 </li>
-    %section.container
+    %div.container
       = yield
