@@ -35,16 +35,18 @@
         %ul.thumbnails
           %li.span8
             %img{:src => @project.image_url, :alt => "#{@project.title}", :class => "img-polaroid"}
-        %button{:class => "btn btn-success", :type => "button"}>
-          このプロジェクトを支援
+
+        -# link_toのパスに:idを挟む書き方がわからないのでとりあえず以下    
+        = link_to "#{@project.id}/procedure" do
+          %button{:class => "btn btn-success", :type => "button"}>
+            このプロジェクトを支援
       %div.reward
         %h3>
           Reward
         %ul
         -@project.rewards.each do |reward|
           %li
-            =reward.title
+            = reward.title
             %p
-              =reward.description
-
+              = reward.description
 
