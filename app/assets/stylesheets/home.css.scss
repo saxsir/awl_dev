@@ -1,3 +1,52 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body { /* Add top padding for full-width layout */
+  padding-top: 260px;
+  padding-bottom: 40px;
+
+  h2{
+    font-size: 18px;
+  }
+  header {
+    
+    #header-top-wrap {
+      background-image: url(header-bg.png);
+      height: 200px;
+      position: relative;
+
+      #header-top-inner {
+        background: black;
+        filter:alpha(opacity=80);
+        -moz-opacity: 0.8;
+        opacity: 0.8;
+        position: absolute;
+        top: 20px;
+        height: 160px;
+        width: 100%;
+        color: white;
+
+        #logo-wrap {
+          #logo-image {
+            float: left;
+          }
+          #site-title {
+            float: left;
+          }
+        }
+        #awl-desc {
+
+        }
+      }
+    }
+  }
+ }
+
+@media (max-width: 979px) {
+  body { /* Remove top padding when top navbar goes static */
+    padding-top: 0;
+    .navbar-fixed-top {
+      margin-bottom: 0px;
+    }
+  }
+}
