@@ -9,7 +9,16 @@
     = yield :header
   %body.preview{"data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
     %header
-      #navigation.navbar.navbar-fixed-top
+      .cover
+        .bg
+        .welcome
+          .container
+            .row
+              .span6
+                %h1>
+                  = image_tag('logo.png', :alt => 'AWL')
+                  AWL
+      #navigation.navbar.navbar-static-top{"data-spy" => "affix", "data-offset-top" => "200"}
         .navbar-inner
           .container
             %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}

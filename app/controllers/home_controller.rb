@@ -2,9 +2,7 @@ class HomeController < ApplicationController
   # GET /
   def index
     @projects = Project.find(:all, :conditions => {:slideshow => true})
-    respond_to do |format|
-        format.html # index.html.erb
-      end
+    render :layout => 'home_index_template'
   end
 
   # GET /about
