@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   # GET /
   def index
-    @projects = Project.find([1,2,3,4,5])
+    @projects = Project.find(:all, :conditions => {:slideshow => true})
     respond_to do |format|
         format.html # index.html.erb
       end
