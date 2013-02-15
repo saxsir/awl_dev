@@ -16,3 +16,13 @@
 //= require_tree .
 //add
 //= require jquery.grid-a-licious.min.js
+
+/*
+// add
+$('.affix').affix({
+    offset: {
+        top: 430,
+        bottom: 240
+    }
+});
+*/
