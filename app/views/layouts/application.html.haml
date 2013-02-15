@@ -4,36 +4,43 @@
     %title AwlDev
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     = csrf_meta_tags
-    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
   %body.preview{"data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
-    %div.navbar.navbar-fixed-top
-      %div.navbar-inner
-        %div.container
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to 'AWL', root_path, :class => 'brand'
-          %header#main-menu.nav-collapse
-            %ul#main-menu-left.nav
-              %li= link_to 'projects', projects_path
-              %li= link_to 'about us', about_path
-              - if user_signed_in?
-                %li= link_to 'Mypage', mypage_index_path(:username => current_user.username)
-                %li= link_to 'Logout', destroy_user_session_path, :method => :delete
-                %li
-              - else
-                %li= link_to 'Login', new_user_session_path
-                %li= link_to 'sign up', new_user_registration_path
-              / dropdown menu example
-              /
-                <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                </ul>
-                </li>
-    %div.container
+    %header
+      =yield :cover
+      #navigation.navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to 'AWL', root_path, :class => 'brand'
+            .nav-collapse
+              %ul.nav.pull-right
+                %li.divider-vertical
+                %li>
+                  =link_to 'home', root_path
+                %li.divider-vertical
+                %li>
+                  =link_to 'projects', projects_path
+                %li.divider-vertical
+                %li>
+                  =link_to 'about', about_path
+                %li.divider-vertical
+                -if user_signed_in?
+                  %li>
+                    =link_to 'mypage', mypage_index_path(:username => current_user.username)
+                  %li.divider-vertical
+                  %li>
+                    =link_to 'logout', destroy_user_session_path, :method => :delete
+                -else
+                  %li>
+                    =link_to 'login', new_user_session_path
+                  %li.divider-vertical
+                  %li>
+                    =link_to 'signup', new_user_registration_path
+                %li.divider-vertical
+    .container
       = yield
