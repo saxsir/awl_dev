@@ -14,11 +14,12 @@
  * add
  *= require bootstrap/bootstrap.min.css
  *= require bootstrap/bootstrap-responsive.min.css
+ *= require_tree .
  */
 
 /* Top Padding for responsive navbar-top-fixed */
 body { /* Add top padding for full-width layout */
-  padding-top: 60px;
+  padding-top: 40px;
   padding-bottom: 40px;
  }
 @media (max-width: 979px) {
