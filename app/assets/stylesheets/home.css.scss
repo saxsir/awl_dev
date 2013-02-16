@@ -26,13 +26,13 @@ body#home {
 
   #navigation {
     .affix {
-      position: static;
       width: auto;
       top: 0px;
     }
     .navbar {
       width: 100%;
     }
+
   }
 }
 @media (max-width: 767px) {
