@@ -15,7 +15,7 @@
 //= require twitter/bootstrap
 //= require_tree .
 //add
-//= require jquery.grid-a-licious.min.js
+//= require grid-a-licious/jquery.grid-a-licious.min.js
 
 /*
 // add
