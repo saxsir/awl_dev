@@ -68,5 +68,25 @@ body#home {
       padding-right: 20px;
       padding-left: 20px;
     }
+
+    #cover {
+      height: 200px;
+      
+      #bg {
+        height: 200px;
+        
+        #welcome {
+          height: 180px;
+          margin: 10px 0px;
+          .container {
+            padding-top: 0px;
+
+            h2#awl-phrase {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
   }
 }
