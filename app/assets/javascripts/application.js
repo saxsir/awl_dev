@@ -16,6 +16,7 @@
 //= require_tree .
 //add
 //= require grid-a-licious/jquery.grid-a-licious.min.js
+//= require iosSlider/jquery.iosslider.min.js
 
 /*
 // add
