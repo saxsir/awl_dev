@@ -1,19 +1,33 @@
-
-/
-  #grid
+%section.pickup-project
   %h2
     PickUp Projects
-  %section.pickup-project
-  - @projects.each do |project|
-    - if project.slideshow? #projects#indexのNew&Hotと同じ扱いでいいのだろうか？
-      .item
-        = link_to project do
-          %h4= project.title
-          %img{:src => project.image_url, :alt =>project.title}
-        %p
-          目標金額:
-          =project.target_amount
-          %br
-          現在金額:
-          =project.total_amount
+  #carousel.carousel.slide
 
+    .carousel-inner
+      .active.item
+        %img{:src => "http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg"}
+        .carousel-caption
+          %h4
+            スライドショーの最初のプロジェクト。
+          %p
+            あるいは何か重要なこと。その説明。
+
+      - @projects.each do |project|
+        - if project.slideshow?
+          .item
+            = link_to project do
+              %img{:src => project.image_url, :alt =>project.title}
+            .carousel-caption
+              %h4= project.title
+              %p
+                目標金額:
+                =project.target_amount
+              %p
+                現在金額:
+                =project.total_amount
+    %a.carousel-control.left{:href => "#carousel","data-slide" => "prev"}
+    %a.carousel-control.right{:href => "#carousel","data-slide" => "next"}
+-# jaypeg式navbarのテスト用(だよね？ｗ)
+- 100.times.each do
+  %p
+    テストパラグラフですよ
