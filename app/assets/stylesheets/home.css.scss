@@ -59,6 +59,20 @@ body#home {
     section#pickup-project {
       margin-top: 20px;
     }
+
+    section#project-list {
+      padding-bottom: 20px;
+    }
+  } /* /.container */
+
+  footer {
+    .container {
+      margin: 0 auto;
+
+      a#copyright {
+        color: black;
+      }
+    }
   }
 } /* /body#home */
 
