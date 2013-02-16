@@ -10,14 +10,23 @@
   %body#home
     %header
       #cover
-        .bg
-        .welcome
-          .container
-            .row
-              .span6
-                %h1>
-                  = image_tag('logo.png', :alt => 'AWL')
-                  AWL
+        #bg
+          #welcome
+            .container
+              .row
+                .span4.offset1
+                  %h1>
+                    = image_tag('http://cambelt.co/120x120/Logo?color=25d54e', :alt => 'AWL')
+                    AWL
+                .span6
+                  %h2#awl-phrase>
+                    クリエイターをもっと自由に。マニアを共犯者に。
+                  .row
+                    .span8.offset1
+                      %p#awl-desc
+                        AWLは、クリエイターとマニアをつなぐ、サブカルチャーに
+                        %br
+                        特化したクラウドファンディングサイトです。
       #navigation
         .navbar.navbar-static-top.affix-top{"data-spy" => "affix", "data-offset-top" => "430"}
           .navbar-inner
