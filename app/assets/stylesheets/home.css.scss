@@ -41,8 +41,8 @@ body#home {
           }
         }
       }
-    }
-  }
+    } 
+  } /* /#cover */
 
   #navigation {
     .affix {
@@ -51,10 +51,17 @@ body#home {
     }
     .navbar {
       width: 100%;
-    }
+      z-index: 1;
+    } 
+  } /* /#navigation */
 
+  .container {
+    section#pickup-project {
+      margin-top: 20px;
+    }
   }
-}
+} /* /body#home */
+
 @media (max-width: 767px) {
   body#home {
     padding-right: 0;
