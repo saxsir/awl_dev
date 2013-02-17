@@ -1,4 +1,51 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body#project-page {
+  h2#project-title{
+    background-color: black;
+    color: white;
+    margin: 20px 0px;
+    text-align: center;
+  }
 
+  .content {
+    background-color: #eee;
+  }
+
+  #project-image {}
+  #project-desc {}
+  #partner {
+    .user-icon {
+      margin-bottom: 10px;
+    }
+
+    div.user-icon:hover { /*マウスが乗ったら*/
+      position: relative;
+      top: 0px; left: 0px;
+    }
+    
+    .comment {
+      position: absolute;
+      top:70px; left:20px;
+      display: none;
+      padding: 5px;
+      width: 300px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #b22222;
+
+      border-top:white solid 10px;
+      border-left:#b22222 solid 10px;
+
+      filter: alpha(opacity=85);
+      -moz-opacity:0.85;
+      opacity:0.85;
+    }
+
+    div.user-icon:hover .comment {
+      display: block;
+    }
+  }
+}
