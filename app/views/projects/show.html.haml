@@ -1,4 +1,8 @@
-%p#notice= notice
+- @body_id = "project-page"
+%p#notice
+  = flash[:notice]
+%h2<
+  =@project.title
 %div.row-fluid
   %div.span12
     %h2<
