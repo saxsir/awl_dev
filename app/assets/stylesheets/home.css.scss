@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body#home {
-  padding-top: 0;
+  padding: 0px;
+  color: white;
   #cover {
     background-color: black;
-    color: white;
     height: 430px;
 
     #bg {
@@ -66,11 +66,17 @@ body#home {
   } /* /.container */
 
   footer {
+    background-color: #ddd;
+    padding-top: 20px;
+
     .container {
       margin: 0 auto;
-
       a#copyright {
         color: black;
+      }
+
+      .fb-like-box {
+        background-color: white;
       }
     }
   }
