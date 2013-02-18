@@ -1,55 +1,61 @@
 - @body_id = "mypage"
-- if notice
-  %p#notice
-    = flash[:notice]
-%h2.page-title<
-  クリエイターページ
+= content_for :page_title do
+  %h2.page-title<
+    クリエイターページ
+%p#notice= flash[:notice] if notice
 .container
   .row-fluid
-    .span4
-      .span12
-        .row-fluid
-          .span3
-            =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
-          .span8.offset1
-            %p>
-              = @user.username
-      .span12
-        作成中野プロジェクト
-      .span12
-        ブログパーツ・ソースコードのDL
-    - @user.projects.each do |project|
-    .span8
-      - # アーティストはprojectを持っているはず
-      - 
-      %div.span12
-        %ul.unstyled
-          %li>
-            %a{:href => "#", :title => "支援したプロジェクト"}<
-              支援したプロジェクト
-          %li>
-            %a{:href => "#", :title => "ユーザー情報"}<
-              ユーザー情報
-  %div.span8
-    %h2>
-      支援したプロジェクト
-    -@user.projects.each do |project|
-      %div.row-fluid
-        %div.span4
-          %img{:src => "http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg", :alt => "プロジェクトサムネイル", :class => "img-polaroid"}
-          %h3>
-            = project.title
-        %div.span8
-          %dl
-            %dt>
-              現在のプロジェクトの状況
-            %dd
-              プロジェクト期間中／終了のいずれか
-            %dt>
-              コメント
-            %dd>
-              めっちゃオススメ。みんなも支援してね(・∀・)
+    .span4#user-info
+      .row-fluid
+        .span12
+          .row-fluid
+            .span3
+              =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+            .span8.offset1
+              %p>
+                = @user.username
+          %hr
+        .span12
           %p
-            %a{:href => "", :title => "コメントを編集する"}>
-              コメントを編集する
-
+            作成中のプロジェクト
+          %hr
+        .span12#download
+          %div
+            =image_tag('http://cambelt.co/35x35/DL', :class => 'img-polaroid')
+          %p
+            ブログパーツ・ソースコードのDL
+    .span8
+      %ul.unstyled
+        - @user.projects.each do |project|
+          %li.project
+            .row-fluid
+              .span4.left-content
+                %h3.project-title>
+                  project.title
+                =image_tag('http://cambelt.co/150x150/Project+Image', :class => 'img-polaroid')
+              .span8
+                .row-fluid
+                  .span12
+                    %p
+                      現在のプロジェクトの状況
+                    %hr
+                  .span12
+                    %p
+                      現在の支援額
+                    %hr
+                  .row-fluid
+                    .span6#partner
+                      パートナー
+                    .span6
+                      残り
+                  %hr
+                  .span12
+                    %p
+                      達成率
+                    .progress.progress-striped.active
+                      - percentage = project.total_amount.to_f / project.target_amount.to_f * 100
+                      .bar(style='width:#{percentage}%;')
+                        %span
+                          = percentage.to_i.to_s + '%'
+                  .span12
+                    = link_to 'プロジェクトを編集', edit_project_path(project.id), {:class => 'pull-right'}
