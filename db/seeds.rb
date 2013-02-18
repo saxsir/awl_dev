@@ -56,8 +56,11 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
     p.target_amount = 1000000 * i
     p.url = ""
     p.image_url = 'http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg'
-    p.user_id = i + 1
-
+    if i%2 == 0
+      p.user_id = 2 #artisto
+    else
+      p.user_id = 3 #nikezono
+    end
     #ここでpayment_tagを生成するアルゴリズムを書く
     p.payment_tag = '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_s-xclick">
