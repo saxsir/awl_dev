@@ -1,13 +1,10 @@
-%section#pickup-project
-  #i-catch.carousel.slide
-    %ol.carousel-indicators
-      - # スライドショーの1枚目用に事前に1つliタグをいれてある
-      %li.active{"data-target" => "#i-catch", "data-slide-to" => "0"}
-      - @projects.each_with_index do |project, i|
-        %li{"data-target" => "#i-catch", "data-slide-to" => "#{i+1}"}
+%section.pickup-project
+  %h2
+    PickUp Projects
+  #carousel.carousel.slide
     .carousel-inner
-      .item.active
-        = image_tag('http://cambelt.co/1350x500/Sample+Image', :alt => "1枚目")
+      .active.item
+        %img{:src => "http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg"}
         .carousel-caption
           %h4
             スライドショーの最初のプロジェクト。
@@ -15,34 +12,21 @@
             あるいは何か重要なこと。その説明。
 
       - @projects.each do |project|
-        .item
-          = link_to project do
-            /%img{:src => project.image_url, :alt =>project.title}
-            = image_tag('http://cambelt.co/1350x500/Sample+Image', :alt => project.title)
-          .carousel-caption
-            %h4= project.title
-            %p
-              目標金額:
-              =project.target_amount
-              &nbsp;
-              現在金額:
-              =project.total_amount
-    %a.carousel-control.left{:href => "#i-catch","data-slide" => "prev"}
-    %a.carousel-control.right{:href => "#i-catch","data-slide" => "next"}
-%section#project-list
-  %h3>
-    PROJECTs
-  - # とりあえずコントローラーではslideshowカラムがtrueのプロジェクトのみ取得している
-  - # スライドショーの下のProjectsに、スライドショーに流れるのと同じプロジェクトのみ表示するのか, 全部表示するのか...
-  #grid
-    - @projects.each do |project|
-      .item
-        %h4= project.title
-        = link_to project do
-          %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
-        %p
-          目標金額:
-          =project.target_amount
-          %br
-          現在金額:
-          =project.total_amount
+        - if project.slideshow?
+          .item
+            = link_to project do
+              %img{:src => project.image_url, :alt =>project.title}
+            .carousel-caption
+              %h4= project.title
+              %p
+                目標金額:
+                =project.target_amount
+              %p
+                現在金額:
+                =project.total_amount
+    %a.carousel-control.left{:href => "#carousel","data-slide" => "prev"}
+    %a.carousel-control.right{:href => "#carousel","data-slide" => "next"}
+-# jaypeg式navbarのテスト用(だよね？ｗ)
+- 100.times.each do
+  %p
+    テストパラグラフですよ
