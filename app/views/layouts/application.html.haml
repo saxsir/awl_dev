@@ -44,6 +44,7 @@
                     %li>
                       = link_to 'signup', new_user_registration_path
                   %li.divider-vertical
+    = yield :page_title
     .container
       = yield
     = render 'layouts/footer'
