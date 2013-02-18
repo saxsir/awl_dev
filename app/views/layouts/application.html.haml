@@ -8,6 +8,15 @@
     = javascript_include_tag "application"
     = yield :header
   %body{:id => @body_id, :class => "preview", "data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
+    #fb-root
+    %script
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=483779848307263";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     %header
       #navigation
         .navbar.navbar-fixed-top
@@ -44,3 +53,24 @@
                       = link_to 'signup', new_user_registration_path
                   %li.divider-vertical
     = yield
+    %footer
+      .container
+        .row
+          .span6.offset6.pull-right
+            .fb-like-box{"data-href" => "http://www.facebook.com/platform", "data-header" => "true", "data-width" => "450", "data-height" => "250", "data-show-faces" => "true", "data-stream" => "false"}
+      .container
+        %nav.nav.nav-pills.pull-left
+          %li>
+            = link_to '特定商取引に基づく表記利用規約', about_path
+          %li>
+            = link_to 'プライバシーポリシー', '#'
+          %li>
+            = link_to 'お問い合わせ', '#'
+          %li>
+            = link_to 'プレスルーム', '#'
+          %li.disabled>
+            = link_to '採用情報', '#'
+          %li>
+            = link_to '運営会社', '#'
+          %li.disabled>
+            = link_to 'Copyright (c) 2013 AWL CO.,Ltd. All Rights Reserved.', '#', {:id => 'copyright'}
