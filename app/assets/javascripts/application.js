@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require twitter/bootstrap
 //= require_tree .
 //add
@@ -19,3 +20,4 @@
 //= require iosSlider/jquery.iosslider.min.js
 //= require jglycy/jglycy-1.0.min.js
 //= require jtruncsubstr/jquery.jtruncsubstr-1.0rc.min.js
+//= require jquery-easing/jquery.easing.1.3.js

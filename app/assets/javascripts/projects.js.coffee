@@ -10,3 +10,9 @@ jQuery ->
 
 jQuery ->
   $('.carousel').carousel('cycle')
+
+#Procedureのシングルページ実装
+jQuery ->
+	$('#procedure_page_2').hide()
+	$('#nextButton').click ->
+		$('#procedure_page_2').show("clip",500)

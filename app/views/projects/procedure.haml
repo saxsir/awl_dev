@@ -8,84 +8,125 @@
 
 
 //手続きページ1
-.row-fluid#procedure_page_1
-  .span12.well
-    -#まるごとformでくくるのはヤバイか？
-    %form
-      %h4
-        支援額&リワード選択
-      %table.table.table-hover<
-        %thread
-        %tbody
-          - @project.rewards.each do |reward|
-            %tr
-              %td
-                %label.radio
-                  %input{:type => "radio",:name => "rewardSelect"}
-              %td#amount
-                = "¥#{reward.amount} 以上"
-              %td#description
-                = reward.description
-    %hr
-    -#vertical-alignしなかった。困った
-    .inputAmount
-      #strong
-        支援金額：
-        .input-append
-          %input{:type => "number", :name => "inputAmount", :required => "true", :step => "1000", :min => "0",:placeholder=>"Amount"}
+#procedure_page_1
+  .row-fluid
+    .span12.well
+      -#まるごとformでくくるのはヤバイか？
+      %form
+        %h4
+          支援額&リワード選択
+        %table.table
+          %tbody
+            - @project.rewards.each do |reward|
+              %tr
+                %td
+                  %label.radio
+                    %input{:type => "radio",:name => "rewardSelect"}
+                %td
+                  = "¥#{reward.amount} 以上"
+                %td
+                  = reward.description
+      %hr
+      -#vertical-alignしなかった。困った
+      .inputAmount
+        #strong
+          支援金額：
+          .input-append
+            %input{:type => "number", :name => "inputAmount", :required => "true", :step => "1000", :min => "0",:placeholder=>"Amount"}
 
-          - if user_signed_in?
-            %a{:href => "#procedure_page_2"}
-              %button.btn#nextButton
+            - if user_signed_in?
+              %button.btn.btn-primary#nextButton
                 次のステップへ進む
 
 
-- unless user_signed_in?
-  .row-fluid
+  - unless user_signed_in?
+    .row-fluid
 
-    //ログインフォーム
+      //ログインフォーム
+      .span8.well
+        .well
+          %h2 ログイン
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+            = f.label :login
+            = f.text_field :login , {:class => 'span8'}
+            = f.label :password
+            = f.password_field :password , {:class => 'span8'}
+            - if devise_mapping.rememberable?
+              = f.label :remember_me
+              = f.check_box :remember_me
+            = f.submit "ログイン", {:class => 'btn btn-primary pull-right'}
+          .clearfix
+
+      .span4.well
+        %h4 クラウドファウンディングって？
+        %p
+          クラウドファウンディングは、不特定多数の人から資金を集める行為である。 群衆(crowd)と資金調達(funding)を組み合わせた造語で、製品開発やイベントの開催、 チャリティなどの用途で利用されることが多い。ソーシャルファンディングとも呼ばれる。
+
+        //新規登録
+
+    .row-fluid
+      .span8.well
+        .well
+          %h2 新規ユーザー登録
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            = f.label :username
+            = f.text_field :username , {:class => 'span8'}
+            = f.label :email
+            = f.email_field :email , {:class => 'span8'}
+            = f.label :password
+            = f.password_field :password , {:class => 'span8'}
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, {:class => 'span8'}
+            %label
+              %input{:name => "terms", :type => "checkbox"}/
+              I agree with the
+              = succeed "." do
+                %a{:href => "#"} Terms and Conditions
+            = f.submit "新規登録" , {:class => 'btn btn-primary pull-right'}
+            .clearfix
+
+#procedure_page_2
+  .row-fluid
+    .span12.well
+      %h4 支援内容
+      %table.table
+        %tr
+          %td 支援金額
+          %td#supportAmount 支援金額がありません
+        %tr
+          %td リワード内容
+          %td#supportRewards リワード内容がありません
+
+  .row-fluid
     .span8.well
-      .well
-        %h2 ログイン
-        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-          = f.label :login
-          = f.text_field :login , {:class => 'span8'}
-          = f.label :password
-          = f.password_field :password , {:class => 'span8'}
-          - if devise_mapping.rememberable?
-            = f.label :remember_me
-            = f.check_box :remember_me
-          = f.submit "ログイン", {:class => 'btn btn-primary pull-right'}
-        .clearfix
+      %h4 支援者情報
+      %p メールアドレス
+      %textarea.span12
+      %p パスワード
+      %textarea.span12
+      %p パスワードの再確認
+      %textarea.span12
+      %p アイコン
+      =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+      %button.btn.btn-inverse ファイルを選択
+
+      %p.text-error
+        ここでメールアドレス、パスワード、ユーザーネーム、アイコンを聞いているのだが、なぜかわからない・・・。
+        アイコンはわかるけれど、ログインしていなければこの画面まで来れないので、ここの入力は要らないのでは？
+        （要るのであればそのためにデータベースを修正するのでどういう用途か教えて下さい）
 
     .span4.well
       %h4 クラウドファウンディングって？
       %p
         クラウドファウンディングは、不特定多数の人から資金を集める行為である。 群衆(crowd)と資金調達(funding)を組み合わせた造語で、製品開発やイベントの開催、 チャリティなどの用途で利用されることが多い。ソーシャルファンディングとも呼ばれる。
 
-      //新規登録
 
   .row-fluid
     .span8.well
-      .well
-        %h2 新規ユーザー登録
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-          = devise_error_messages!
-          = f.label :username
-          = f.text_field :username , {:class => 'span8'}
-          = f.label :email
-          = f.email_field :email , {:class => 'span8'}
-          = f.label :password
-          = f.password_field :password , {:class => 'span8'}
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation, {:class => 'span8'}
-          %label
-            %input{:name => "terms", :type => "checkbox"}/
-            I agree with the
-            = succeed "." do
-              %a{:href => "#"} Terms and Conditions
-          = f.submit "新規登録" , {:class => 'btn btn-primary pull-right'}
-          .clearfix
+      %h4 コメント内容
+      %textarea#inputComment.span12{:name => "comment",:rows => "5", :placeholder => "コメントを入力しましょう！"}
+      %button.btn.btn-primary 決済手続きへ進む
 
 
 
