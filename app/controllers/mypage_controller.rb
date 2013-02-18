@@ -12,8 +12,10 @@ class MypageController < ApplicationController
     else
       # username重複は登録時にチェック
       @user = @user[0]
-      respond_to do |format|
-        format.html # index.html.erb
+      if @user.artist
+        render :template => 'mypage/artist_index'
+      else
+        render :template => 'mypage/user_index'
       end
     end
   end

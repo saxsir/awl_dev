@@ -1,12 +1,27 @@
-%div.row-fluid
-  %div.span4
-    %div.row-fluid
-      %div.span6
-        %p
-          =@user.username  |
-          さんのマイページ
-      %div.span6
-        %img{:src => "http://web.sfc.keio.ac.jp/~s10363ss/test.jpg", :alt => "ユーザー写真"}
+- @body_id = "mypage"
+- if notice
+  %p#notice
+    = flash[:notice]
+%h2.page-title<
+  クリエイターページ
+.container
+  .row-fluid
+    .span4
+      .span12
+        .row-fluid
+          .span3
+            =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+          .span8.offset1
+            %p>
+              = @user.username
+      .span12
+        作成中野プロジェクト
+      .span12
+        ブログパーツ・ソースコードのDL
+    - @user.projects.each do |project|
+    .span8
+      - # アーティストはprojectを持っているはず
+      - 
       %div.span12
         %ul.unstyled
           %li>

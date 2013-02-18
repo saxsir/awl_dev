@@ -1,0 +1,61 @@
+- @body_id = "mypage"
+- if notice
+  %p#notice
+    = flash[:notice]
+%h2.page-title<
+  ユーザーページ
+.container
+  .row-fluid
+    .span4
+      .span12
+        .row-fluid
+          .span3
+            =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+          .span8.offset1
+            %p>
+              = @user.username
+      .span12
+        作成中野プロジェクト
+      .span12
+        ブログパーツ・ソースコードのDL
+    .span8
+%div.row-fluid
+  %div.span4
+    %div.row-fluid
+      %div.span6
+        %p
+          =@user.username  |
+          さんのマイページ
+      %div.span6
+        %img{:src => "http://web.sfc.keio.ac.jp/~s10363ss/test.jpg", :alt => "ユーザー写真"}
+      %div.span12
+        %ul.unstyled
+          %li>
+            %a{:href => "#", :title => "支援したプロジェクト"}<
+              支援したプロジェクト
+          %li>
+            %a{:href => "#", :title => "ユーザー情報"}<
+              ユーザー情報
+  %div.span8
+    %h2>
+      支援したプロジェクト
+    -@user.projects.each do |project|
+      %div.row-fluid
+        %div.span4
+          %img{:src => "http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg", :alt => "プロジェクトサムネイル", :class => "img-polaroid"}
+          %h3>
+            = project.title
+        %div.span8
+          %dl
+            %dt>
+              現在のプロジェクトの状況
+            %dd
+              プロジェクト期間中／終了のいずれか
+            %dt>
+              コメント
+            %dd>
+              めっちゃオススメ。みんなも支援してね(・∀・)
+          %p
+            %a{:href => "", :title => "コメントを編集する"}>
+              コメントを編集する
+
