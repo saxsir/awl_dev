@@ -7,3 +7,6 @@ jQuery ->
     gutter:10,
     animate:true
   })
+
+jQuery ->
+  $('.carousel').carousel('cycle')

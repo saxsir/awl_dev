@@ -17,7 +17,7 @@ body#project-page {
       position: relative;
       top: 0px; left: 0px;
     }
-    
+
     .comment {
       position: absolute;
       top:70px; left:20px;
@@ -40,5 +40,21 @@ body#project-page {
     div.user-icon:hover .comment {
       display: block;
     }
+  }
+}
+
+body#procedure
+{
+  .inputAmount
+  {
+    #strong{
+      font-size:large;
+      font-weight: bold;
+    }
+    vertical-align:middle;
+  }
+
+  button#nextButton{
+    align: right;
   }
 }
