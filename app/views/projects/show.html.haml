@@ -2,53 +2,51 @@
 - if notice
   %p#notice
     = flash[:notice]
+%h2#project-title<
+  =@project.title
 .container
   .row-fluid
-    .span12
-      %h2<
-        =@project.title
-      .row-fluid
-        .span7.content
-          #project-image
-            =image_tag('http://cambelt.co/670x300/Project+Image')
-          #project-desc
-            %h3>
-              = "クリエイター名：" + @project.user.username
-            %p{"jg" => "jTruncSubstr", "jg:jTruncSubstr" => "length:140, moreText:'もっと見る', lessText:'閉じる', lessAni:0"}
-              = # 63文字 × 5行
-              プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-              プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-              プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-              プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-              プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-            %hr
-          #partner
-            %h3>
-              パートナー
-            - 12.times do
-              .user-icon.span2
-                =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
-                %span.comment
-                  コメントですよ。
-        .span5.content
-          .span12
-            現在の支援額
-            .row-fluid
-              .span6
-                パートナー
-              .span6
-                残り
-          .span12
-            達成率
-          .span12
-            = link_to "#{@project.id}/procedure" do
-              %button{:class => "btn btn-success", :type => "button"}>
-                このプロジェクトを支援する
-          .span12
-            %ul
-            -@project.rewards.each do |reward|
-              %li
-                = reward.title
-                %p
-                  = reward.description
+    .span7.content
+      #project-image
+        =image_tag('http://cambelt.co/670x300/Project+Image')
+      #project-desc
+        %h3>
+          = "クリエイター名：" + @project.user.username
+        %p{"jg" => "jTruncSubstr", "jg:jTruncSubstr" => "length:140, moreText:'もっと見る', lessText:'閉じる', lessAni:0"}
+          = # 63文字 × 5行
+          プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
+          プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
+          プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
+          プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
+          プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
+        %hr
+      #partner
+        %h3>
+          パートナー
+        - 12.times do
+          .user-icon.span2
+            =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+            %span.comment
+              コメントですよ。
+    .span5.content
+      .span12
+        現在の支援額
+        .row-fluid
+          .span6
+            パートナー
+          .span6
+            残り
+      .span12
+        達成率
+      .span12
+        = link_to "#{@project.id}/procedure" do
+          %button{:class => "btn btn-success", :type => "button"}>
+            このプロジェクトを支援する
+      .span12
+        %ul
+        -@project.rewards.each do |reward|
+          %li
+            = reward.title
+            %p
+              = reward.description
 
