@@ -1,23 +1,25 @@
-%h3
-  New Arrival & Hot Project
+.row-fluid
+  .span12.well
+    %h3
+      New Arrival & Hot Project
 
--# New Arrival用
-  - @projects.each do |project|
-  - if project.slideshow?  #こういう書き方合ってるんかね？→たぶん合ってる。thenなくても大丈夫（http://railsapps.github.com/rails-default-application-layout.html）
-    %h3= project.title
-    %p= project.headline
-    %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
-
-#grid
-  - @projects.each do |project|
-    .item
-      %h4= project.title
-      = link_to project do
+    -# New Arrival用
+      - @projects.each do |project|
+      - if project.slideshow?  #こういう書き方合ってるんかね？→たぶん合ってる。thenなくても大丈夫（http://railsapps.github.com/rails-default-application-layout.html）
+        %h3= project.title
+        %p= project.headline
         %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
-      %p
-        目標金額:
-        =project.target_amount
-        %br
-        現在金額:
-        =project.total_amount
+
+    #grid
+      - @projects.each do |project|
+        .item
+          %h4= project.title
+          = link_to project do
+            %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
+          %p
+            目標金額:
+            =project.target_amount
+            %br
+            現在金額:
+            =project.total_amount
 
