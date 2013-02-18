@@ -7,7 +7,7 @@
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = yield :header
-  %body.preview{"data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
+  %body{:id => @body_id, :class => "preview", "data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
     %header
       #navigation
         .navbar.navbar-fixed-top
@@ -43,7 +43,4 @@
                     %li>
                       = link_to 'signup', new_user_registration_path
                   %li.divider-vertical
-    .container
-      .row
-        .span12
-          = yield
+    = yield

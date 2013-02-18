@@ -16,13 +16,6 @@
 //= require_tree .
 //add
 //= require grid-a-licious/jquery.grid-a-licious.min.js
-
-/*
-// add
-$('.affix').affix({
-    offset: {
-        top: 430,
-        bottom: 240
-    }
-});
-*/
+//= require iosSlider/jquery.iosslider.min.js
+//= require jglycy/jglycy-1.0.min.js
+//= require jtruncsubstr/jquery.jtruncsubstr-1.0rc.min.js

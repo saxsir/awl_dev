@@ -1,18 +1,16 @@
 .row#procedure_page_1
   .span12
-    %blockquote
-      %p
-        %strong= @project.title
-      %small
-        プロジェクト立ち上げ人：
-        = @project.user.username
+
+    %h4= @project.title
+    %p
+      プロジェクト立ち上げ人：
+      = @project.user.username
 
     -#
       とりあえずグリッドレイアウトでリワードを並べる
       が、この中がどうなるのかはレイアウトに書いてない
       個人的にはグリッドレイアウト＋横スクロールエリア+divを選択、がいいと思う
 
-    #grid.rewards
     %h3
       リワード選択
     - @project.rewards.each do |reward|

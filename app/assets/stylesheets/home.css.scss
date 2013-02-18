@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body#home {
-  padding-top: 0;
+  padding: 0px;
+  color: white;
   #cover {
     background-color: black;
-    color: white;
     height: 430px;
 
     #bg {
@@ -41,8 +41,8 @@ body#home {
           }
         }
       }
-    }
-  }
+    } 
+  } /* /#cover */
 
   #navigation {
     .affix {
@@ -51,10 +51,37 @@ body#home {
     }
     .navbar {
       width: 100%;
+      z-index: 1;
+    } 
+  } /* /#navigation */
+
+  .container {
+    section#pickup-project {
+      margin-top: 20px;
     }
 
+    section#project-list {
+      padding-bottom: 20px;
+    }
+  } /* /.container */
+
+  footer {
+    background-color: #ddd;
+    padding-top: 20px;
+
+    .container {
+      margin: 0 auto;
+      a#copyright {
+        color: black;
+      }
+
+      .fb-like-box {
+        background-color: white;
+      }
+    }
   }
-}
+} /* /body#home */
+
 @media (max-width: 767px) {
   body#home {
     padding-right: 0;
@@ -67,6 +94,26 @@ body#home {
     .container {
       padding-right: 20px;
       padding-left: 20px;
+    }
+
+    #cover {
+      height: 200px;
+      
+      #bg {
+        height: 200px;
+        
+        #welcome {
+          height: 180px;
+          margin: 10px 0px;
+          .container {
+            padding-top: 0px;
+
+            h2#awl-phrase {
+              font-size: 12px;
+            }
+          }
+        }
+      }
     }
   }
 }
