@@ -6,8 +6,9 @@
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
-    = yield :header
+    = yield :head
   %body{:id => @body_id, :class => "preview", "data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
+    = render 'layouts/fb-root'
     %header
       #navigation
         .navbar.navbar-fixed-top
@@ -43,4 +44,7 @@
                     %li>
                       = link_to 'signup', new_user_registration_path
                   %li.divider-vertical
-    = yield
+    = yield :page_title
+    .container
+      = yield
+    = render 'layouts/footer'

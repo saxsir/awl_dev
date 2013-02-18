@@ -61,25 +61,9 @@ body#home {
     }
 
     section#project-list {
-      padding-bottom: 20px;
+     
     }
   } /* /.container */
-
-  footer {
-    background-color: #ddd;
-    padding-top: 20px;
-
-    .container {
-      margin: 0 auto;
-      a#copyright {
-        color: black;
-      }
-
-      .fb-like-box {
-        background-color: white;
-      }
-    }
-  }
 } /* /body#home */
 
 @media (max-width: 767px) {
