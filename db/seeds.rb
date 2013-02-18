@@ -53,7 +53,7 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
   Project.create! do |p|
     p.title = "project#{i}"
     p.total_amount = 10000 * 1
-    p.target_amount = 1000000 * i
+    p.target_amount = 15000 * i
     p.url = ""
     p.image_url = 'http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg'
     if i%2 == 0

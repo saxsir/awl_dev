@@ -6,7 +6,7 @@
   ユーザーページ
 .container
   .row-fluid
-    .span4
+    .span4#user-info
       .span12
         .row-fluid
           .span3
@@ -14,8 +14,10 @@
           .span8.offset1
             %p>
               = @user.username
+      %hr
       .span12
-        作成中野プロジェクト
+        作成中のプロジェクト
+      %hr
       .span12
         ブログパーツ・ソースコードのDL
     .span8
