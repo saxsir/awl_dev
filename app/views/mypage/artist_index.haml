@@ -39,15 +39,29 @@
                     %p
                       現在のプロジェクトの状況
                     %hr
-                  .span12
-                    %p
-                      現在の支援額
-                    %hr
+                  .row-fluid
+                    .span7
+                      %p
+                        現在の支援額
+                      %p
+                        ¥
+                        = project.total_amount
+                    .span5
+                      %p
+                        目標支援額 ¥
+                        =project.target_amount
+                  %hr
                   .row-fluid
                     .span6#partner
-                      パートナー
+                      %p
+                        パートナー
+                      %p
+                        = project.supports.length
+                        人
                     .span6
-                      残り
+                      %p
+                        残り
+                      %p
                   %hr
                   .span12
                     %p
