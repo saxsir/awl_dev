@@ -45,6 +45,7 @@
                   %li.divider-vertical
     = yield :page_title
     .container.main
+      = render :partial => "layouts/flash_messages", :locals => {:flash => flash}
       = yield
     = render 'layouts/footer'
     = javascript_include_tag "application"

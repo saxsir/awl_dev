@@ -2,10 +2,6 @@
 = content_for :page_title do
   %h2.page-title<
     =@project.title
-- if notice
-  .alert.alert-info
-    %p#notice
-      = flash[:notice]
 
 //手続きページ1
 #procedure_page_1
