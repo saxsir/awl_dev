@@ -11,7 +11,7 @@ jQuery ->
 jQuery ->
   $('.carousel').carousel('cycle')
 
-#Procedureのシングルページ実装
+#Procedureのシングルページでの遷移の実装
 jQuery ->
 	$('#procedure_page_2').hide()
 	$('#nextButton').click ->
