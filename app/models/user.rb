@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   # attr_accessible :title, :body
   has_many :projects
-
+  has_many :supports
   
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
