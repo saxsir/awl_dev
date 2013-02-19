@@ -15,4 +15,5 @@ jQuery ->
 jQuery ->
 	$('#procedure_page_2').hide()
 	$('#nextButton').click ->
+		$('#procedure_page_1').hide('blind',300)
 		$('#procedure_page_2').show("clip",500)
