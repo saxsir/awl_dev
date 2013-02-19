@@ -88,11 +88,11 @@ Reward.connection.execute("delete from sqlite_sequence where name='rewards'")
 10.times do |i|
   5.times do |j|
     Reward.create! do |r|
-      r.description = "リワード説明"
+      r.description = "#{j}番のリワード説明"
       r.project_id = i + 1
-      r.title = "リワード名"
+      r.title = "#{j}番のリワードタイトル"
       r.image_url = "http://web.sfc.keio.ac.jp/~t10643sn/sign_ball.jpeg"
-      r.amount = 1000 * j
+      r.amount = 1000 * (j+1)
     end
   end
 end
