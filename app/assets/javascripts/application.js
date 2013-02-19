@@ -21,3 +21,4 @@
 //= require jglycy/jglycy-1.0.min.js
 //= require jtruncsubstr/jquery.jtruncsubstr-1.0rc.min.js
 //= require jquery-easing/jquery.easing.1.3.js
+//= require jquery.numeric/jquery.numeric.js

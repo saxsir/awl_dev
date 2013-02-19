@@ -28,7 +28,7 @@
         #strong
           支援金額：
           .input-append
-            %input.number#input-number-amount{:type => "number", :name => "inputAmount", :required => "true", :step => "1000", :min => "0",:placeholder=>"Amount"}
+            %input.number.positive-integer{:type => "text", :step => "1000", :min => "0",:placeholder=>"金額を入力してください"}
 
             - if user_signed_in?
               %button.btn.btn-primary#nextButton

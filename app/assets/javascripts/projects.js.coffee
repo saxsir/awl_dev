@@ -14,9 +14,22 @@ jQuery ->
 #Procedureのシングルページでの遷移の実装
 #だんだん良くないことをしているような気がしてきた
 jQuery ->
+
+	#とりあえず隠す（display:noneだけど)
 	$('#procedure_page_2').hide()
+
+	#numericなinputに対しての制限をかける
+	$(".positive-integer").numeric
+  decimal: false
+  negative: false
+, ->
+  alert "Positive integers only"
+  @value = ""
+  @focus()
+
+
 	$('#nextButton').click ->
-		valS = $('#input-number-amount').val
+		valS = $('.input-amount input').val
 		val = Number(valS) || 0
 		alert(val)
 		$('#procedure_page_1').hide('blind',300)
