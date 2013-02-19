@@ -24,11 +24,11 @@
                   = reward.description
       %hr
       -#vertical-alignしなかった。困った
-      .inputAmount
+      .input-amount
         #strong
           支援金額：
           .input-append
-            %input{:type => "number", :name => "inputAmount", :required => "true", :step => "1000", :min => "0",:placeholder=>"Amount"}
+            %input.number#input-number-amount{:type => "number", :name => "inputAmount", :required => "true", :step => "1000", :min => "0",:placeholder=>"Amount"}
 
             - if user_signed_in?
               %button.btn.btn-primary#nextButton
@@ -93,6 +93,8 @@
         %tr
           %td リワード内容
           %td#supportRewards リワード内容がありません
+      %button.btn.btn-primary#prevButton
+        リワード選択をやり直す
 
   .row-fluid
     .span8.well
