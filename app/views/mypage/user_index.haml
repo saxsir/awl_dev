@@ -16,71 +16,87 @@
                 = @user.username
           %hr
         .span12
-          %p
-            支援したプロジェクト
-          %hr
-        .span12
-          %p
-            ユーザー情報
+          %ul.unstyled#profile-tab
+            %li
+              = link_to '支援したプロジェクト', '#project-list', {"data-toggle" => "tab", "data-target" => "#project-list"}
+            %li
+              = link_to 'ユーザー情報', '#profile', {"data-toggle" => "tab", "data-target" => "#profile"}
     .span8
-      %ul.unstyled
-        - supports = Array.new #同じプロジェクトを2回支援している可能性
-        - @user.supports.each do |support|
-          - project = support.project #何回か利用するので予め変数に代入
-          - # 同じプロジェクトを2回支援している場合はとりあえず保留（合計金額の算出がめんどくさい）
-          %li.project
-            .row-fluid
-              .span4.left-content
-                %h3.project-title>
-                  project.title
-                =image_tag('http://cambelt.co/200x200/Project+Image', :class => 'img-polaroid')
-              .span8.right-content
+      .tab-content
+        .tab-pane#project-list
+          %ul.unstyled
+            - supports = Array.new #同じプロジェクトを2回支援している可能性
+            - @user.supports.each do |support|
+              - project = support.project #何回か利用するので予め変数に代入
+              - # 同じプロジェクトを2回支援している場合はとりあえず保留（合計金額の算出がめんどくさい）
+              %li.project
                 .row-fluid
-                  .span12
-                    %p
-                      現在のプロジェクトの状況
-                    %hr
-                  .row-fluid
-                    .span7
-                      %p
-                        現在の支援額
-                      %p
-                        ¥
-                        = project.total_amount
-                    .span5
-                      %p
-                        目標支援額 ¥
-                        =project.target_amount
-                  %hr
-                  .row-fluid
-                    .span6#partner
-                      %p
-                        パートナー
-                      %p
-                        = project.supports.length
-                        人
-                    .span6
-                      %p
-                        残り
-                      %p
-                  %hr
-                  .span12
-                    %p
-                      達成率
-                    .progress.progress-striped.active
-                      - percentage = project.total_amount.to_f / project.target_amount.to_f * 100
-                      .bar(style='width:#{percentage}%;')
-                        %span
-                          = percentage.to_i.to_s + '%'
-                  .span12
-                    %p
-                      支援額 ¥
-                      =support.amount
-                    %hr
-                  .span12
-                    %p
-                      コメント
-                    %p
-                      = support.comment
-                  .span12
-                    = link_to 'コメントを編集', edit_support_path(support.id), {:class => 'pull-right'}
+                  .span4.left-content
+                    %h3.project-title>
+                      project.title
+                    =image_tag('http://cambelt.co/200x200/Project+Image', :class => 'img-polaroid')
+                  .span8.right-content
+                    .row-fluid
+                      .span12
+                        %p
+                          現在のプロジェクトの状況
+                        %hr
+                      .row-fluid
+                        .span7
+                          %p
+                            現在の支援額
+                          %p
+                            ¥
+                            = project.total_amount
+                        .span5
+                          %p
+                            目標支援額 ¥
+                            =project.target_amount
+                      %hr
+                      .row-fluid
+                        .span6#partner
+                          %p
+                            パートナー
+                          %p
+                            = project.supports.length
+                            人
+                        .span6
+                          %p
+                            残り
+                          %p
+                      %hr
+                      .span12
+                        %p
+                          達成率
+                        .progress.progress-striped.active
+                          - percentage = project.total_amount.to_f / project.target_amount.to_f * 100
+                          .bar(style='width:#{percentage}%;')
+                            %span
+                              = percentage.to_i.to_s + '%'
+                      .span12
+                        %p
+                          支援額 ¥
+                          =support.amount
+                        %hr
+                      .span12
+                        %p
+                          コメント
+                        %p
+                          = support.comment
+                      .span12
+                        = link_to 'コメントを編集', edit_support_path(support.id), {:class => 'pull-right'}
+        .tab-pane#profile
+          .row-fluid
+            .span12
+              ユーザー情報
+            .span12
+              %p
+                メールアドレス
+              %p
+                パスワード
+              %p
+                ユーザーネーム
+              %p
+                アイコン
+
+
