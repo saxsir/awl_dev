@@ -5,7 +5,6 @@
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
     = yield :head
   %body{:id => @body_id, :class => "preview", "data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
     = render 'layouts/fb-root'
@@ -48,3 +47,5 @@
     .container.main
       = yield
     = render 'layouts/footer'
+    = javascript_include_tag "application"
+    = yield :javascript

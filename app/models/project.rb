@@ -3,4 +3,6 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :rewards
   has_many :supports
+
+  validates:target_amount, :numericality => {:greater_than_or_equal_to => 1000}
 end

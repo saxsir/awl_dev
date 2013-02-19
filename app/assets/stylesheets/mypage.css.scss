@@ -19,7 +19,8 @@ body#mypage {
     #download {
       text-align: center;
     }
-  }
+  } /* /#user-info */
+
   .project {
     background-color: white;
     margin-bottom: 20px;
@@ -36,10 +37,20 @@ body#mypage {
 
     .span12 {
       margin-left: 0px;
-    }
+    } 
 
     #partner {
       border-right: 1px solid #ddd;
     }
-  }
+  } /* /.project */
+
+  #profile {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    .span12 {
+      margin-left: 0px;
+    } 
+  } /* /#profile */
 }

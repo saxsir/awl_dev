@@ -53,11 +53,11 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
   Project.create! do |p|
     p.title = "project#{i}"
     p.total_amount = 10000 * 1
-    p.target_amount = 15000 * i
+    p.target_amount = 15000 * (i+1)
     p.url = ""
     p.image_url = 'http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg'
     if i%2 == 0
-      p.user_id = 2 #artisto
+      p.user_id = 2 #artist
     else
       p.user_id = 3 #nikezono
     end
@@ -107,6 +107,7 @@ Support.connection.execute("delete from sqlite_sequence where name='supports'")
     s.project_id = i + 1
     s.reward_id = i + 1
     s.user_id = i + 1
+    s.comment = "がんばってください。"
   end
 end
 
