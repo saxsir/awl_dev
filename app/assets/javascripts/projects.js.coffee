@@ -15,6 +15,10 @@ jQuery ->
 #だんだん良くないことをしているような気がしてきた
 jQuery ->
 
+	#どんな選択と入力をしたか
+	amount = 0
+	reward_id = null
+
 	#とりあえず隠す（display:noneだけど)
 	$('#procedure_page_2').hide()
 
@@ -27,13 +31,17 @@ jQuery ->
   @value = ""
   @focus()
 
-
 	$('#nextButton').click ->
-		valS = $('.input-amount input').val
-		val = Number(valS) || 0
-		alert(val)
-		$('#procedure_page_1').hide('blind',300)
-		$('#procedure_page_2').show("clip",500)
+		valS = $('.input-amount input').val()
+		amount = Number(valS) || 0
+
+		if amount <= 0
+
+			#flash
+			$(".alert").show("highlight",300)
+		else
+			$('#procedure_page_1').hide('blind',300)
+			$('#procedure_page_2').show("clip",500)
 	$('#prevButton').click ->
 		$('#procedure_page_2').hide('clip',300)
 		$('#procedure_page_1').show("blind",500)

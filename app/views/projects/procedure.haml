@@ -7,21 +7,19 @@
 #procedure_page_1
   .row-fluid
     .span12.well
-      -#まるごとformでくくるのはヤバイか？
-      %form
-        %h4
-          支援額&リワード選択
-        %table.table
-          %tbody
-            - @project.rewards.each do |reward|
-              %tr
-                %td
-                  %label.radio
-                    %input{:type => "radio",:name => "rewardSelect"}
-                %td
-                  = "¥#{reward.amount} 以上"
-                %td
-                  = reward.description
+      %h4
+        支援額&リワード選択
+      %table.table
+        %tbody
+          - @project.rewards.each do |reward|
+            %tr
+              %td
+                %label.radio
+                  %input{:type => "radio",:name => "rewardSelect"}
+              %td
+                = "¥#{reward.amount} 以上"
+              %td
+                = reward.description
       %hr
       -#vertical-alignしなかった。困った
       .input-amount
@@ -33,6 +31,14 @@
             - if user_signed_in?
               %button.btn.btn-primary#nextButton
                 次のステップへ進む
+            -#どんどん良くない書き方になっている気がするがalertを直打ち
+          .alert.alert-block.alert-error.fade.in
+            %button.close{"data-dismiss" => "alert"} x
+            %h4.alert-heading 有効な数値を入力してください！
+            %br
+            %p・選択されたリワードの金額以上を入力する必要があります
+            %p・なんとかかんとかの必要があります
+
 
 
   - unless user_signed_in?
@@ -82,6 +88,7 @@
             = f.submit "新規登録" , {:class => 'btn btn-primary pull-right'}
             .clearfix
 
+//手続きページ2
 #procedure_page_2
   .row-fluid
     .span12.well
