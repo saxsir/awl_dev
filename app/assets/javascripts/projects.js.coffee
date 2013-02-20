@@ -36,19 +36,29 @@ jQuery ->
 		amount = Number(valS) || 0
 
 		#次にラジオボタン(リワード）を取得
-		reward = $("input:radio[name='rewardSelect']:checked").val()
+		reward_idS = $("input:radio[name='rewardSelect']:checked").val()
+		reward_id = Number(reward_idS) || null
 
+		if amount <= 0 || reward_idS == undefined
 
-		if amount <= 0 || reward == undefined
-			#flash
+			#ゼロ円以下あるいはリワードが選択されていないときalertを出す
 			$(".alert").show("highlight",300)
 		else
+
+			#jsでのバリデーションが通ったら、ページ遷移
 			$('#procedure_page_1').hide('blind',500)
 			$('#procedure_page_2').show("clip",500)
+
+			#選択内容を確認させる
 			$('#supportAmount').text("¥"+amount)
-			$('#supportRewards').text(reward)
+			$('#supportRewards').text(reward_id)#ここ、idを取ってるから、id一致のinputタグからdescriptionを抜いてくるとか、そういう風にすべき
 
+			#hidden_formに突っ込む
+			$('#support_amount').val(amount)
+			$('#support_reward_id').val(reward_id)
 
+	#ページ２で戻るボタンを押したとき
 	$('#prevButton').click ->
 		$('#procedure_page_2').hide('clip',500)
 		$('#procedure_page_1').show("blind",500)
+

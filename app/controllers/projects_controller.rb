@@ -24,10 +24,17 @@ class ProjectsController < ApplicationController
   # GET /projects/1/procedure
   def procedure
     @project = Project.find(params[:id])
+    @support = Support.new #新規作成用
+
+    #current_userメソッド（どこに書いてあんだよ）を使ってuserを抜く
+    current_user
+    @user = @current_user
 
     respond_to do |format|
       format.html #procedure.haml
       format.json { render json: @project }
+      format.json { render json: @support }
+      format.json { render json: @user    }
     end
   end
 

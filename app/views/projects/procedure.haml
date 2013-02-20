@@ -15,11 +15,12 @@
             %tr
               %td
                 %label.radio
-                  %input{:type => "radio",:name => "rewardSelect", :value => "#{reward.title}"}
+                  %input{:type => "radio",:name => "rewardSelect", :value => "#{reward.id}"}
               %td
                 = "¥#{reward.amount} 以上"
               %td
-                = reward.description
+                %h5= reward.title
+                %p= reward.description
       %hr
       -#vertical-alignしなかった。困った
       .input-amount
@@ -131,8 +132,13 @@
   .row-fluid
     .span8.well
       %h4 コメント内容
-      %textarea#inputComment.span12{:name => "comment",:rows => "5", :placeholder => "コメントを入力しましょう！"}
-      %button.btn.btn-primary 決済手続きへ進む
+      = form_for @support do |f|
+        = f.text_area :comment ,:rows => 5, :class => "span12", :placeholder => "コメントを入力しましょう！"
+        = f.hidden_field :project_id, :value => @project.id
+        = f.hidden_field :user_id, :value =>  @user.id
+        = f.hidden_field :reward_id
+        = f.hidden_field :amount
+        = submit_tag "決済手続きへ進む", :class => "btn btn-primary"
 
 
 
