@@ -26,15 +26,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @support = Support.new #新規作成用
 
-    #current_userメソッド（どこに書いてあんだよ）を使ってuserを抜く
-    current_user
-    @user = @current_user
+    if user_signed_in?
+      @user = current_user
+    end
 
     respond_to do |format|
       format.html #procedure.haml
       format.json { render json: @project }
       format.json { render json: @support }
-      format.json { render json: @user    }
+      format.json { render json: @user }
     end
   end
 
