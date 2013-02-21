@@ -62,3 +62,8 @@ jQuery ->
 		$('#procedure_page_2').hide('clip',500)
 		$('#procedure_page_1').show("blind",500)
 
+	#決済手続きへ進むボタンを押した時
+	$('#support-submit').click ->
+		$('#support-submit').hide('clip',300)
+		$('.payment-submit').show()
+
