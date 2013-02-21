@@ -139,12 +139,7 @@
         = f.hidden_field :reward_id
         = f.hidden_field :amount
         = submit_tag "決済手続きへ進む", :class => "btn btn-primary", :id => "support-submit"
-      = form_tag '/supports/action', :method => '/post' do
 
-        //決済ボタンたち
-        = submit_tag "Paypalで決済する", :class => "btn btn-info payment-submit", :id => "paypal-submit"
-        = submit_tag "銀行振込で決済する(動きません）", :class => "btn btn-info payment-submit", :id => "furikomi-submit"
-        = submit_tag "Google Walletで決済する(動きません）", :class => "btn btn-info payment-submit", :id => "gcheckout-submit"
-
-        -#hidden_field
-
+      %button.btn.btn-info.payment-button#paypal-submit Paypalで決済する
+      %button.btn.btn-info.payment-button#gCheckout-submit Google Walletで決済できないよ
+      %button.btn.btn-info.payment-button#furikomi-submit 銀行振込で決済できないよ

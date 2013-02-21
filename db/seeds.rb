@@ -62,21 +62,8 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
       p.user_id = 3 #nikezono
     end
     #ここでpayment_tagを生成するアルゴリズムを書く
-    p.payment_tag = '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="4ZFXVTD83UMRG">
-    <table>
-    <tr><td><input type="hidden" name="on0" value="リワード">リワード</td></tr><tr><td><select name="os0">
-      <option value="オプション1">オプション1 ¥1,000 JPY</option>
-        <option value="オプション2">オプション2 ¥1,000 JPY</option>
-          <option value="オプション1+2">オプション1+2 ¥2,000 JPY</option>
-          </select> </td></tr>
-          </table>
-          <input type="hidden" name="currency_code" value="JPY">
-          <input type="image" src="https://www.sandbox.paypal.com/ja_JP/JP/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - オンラインでより安全・簡単にお支払い">
-          <img alt="" border="0" src="https://www.sandbox.paypal.com/ja_JP/i/scr/pixel.gif" width="1" height="1">
-          </form>'
-     p.headline="見出し文"
+    p.payment_tag = '4ZFXVTD83UMRG'
+    p.headline="見出し文"
      p.slideshow = true if i%3 == 0 # とりあえず３つくらい
   end
 end

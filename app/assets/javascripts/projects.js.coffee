@@ -65,5 +65,5 @@ jQuery ->
 	#決済手続きへ進むボタンを押した時
 	$('#support-submit').click ->
 		$('#support-submit').hide('clip',300)
-		$('.payment-submit').show()
+		$('.payment-button').show()
 
