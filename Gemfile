@@ -13,6 +13,10 @@ group :development do
   gem 'erb2haml'
 end
 
+# payment API
+# とりあえずpaypalだけ
+gem 'paypal-express'
+
 #production/development
 #プロダクションモードではsqlite3を使うのは推奨されない
 #一応コメントにしておく
