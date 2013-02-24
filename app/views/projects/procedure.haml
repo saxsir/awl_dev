@@ -93,7 +93,7 @@
 //手続きページ2
 #procedure_page_2
   .row-fluid
-    .span12.well
+    .span8.well
       %h4 支援内容
       %table.table
         %tr
@@ -102,50 +102,19 @@
         %tr
           %td リワード内容
           %td#supportRewards リワード内容がありません
-      %button.btn.btn-primary#prevButton
-        リワード選択をやり直す
+      = form_for @support do |f|
+        %h5 コメントフォーム(プロジェクトページに表示されます)
+        = f.text_area :comment ,:rows => 5, :class => "span12", :placeholder => "コメントを入力しましょう！"
+        = f.hidden_field :project_id, :value => @project.id
+        = f.hidden_field :user_id, :value => @user.id if user_signed_in?
+        = f.hidden_field :reward_id
+        = f.hidden_field :amount
+        %button.btn.btn-primary#prevButton リワード選択をやり直す
+        = submit_tag "決済手続きへ進む", :class => "btn btn-inverse", :id => "support-submit"
 
-  .row-fluid
-    .span8.well
-      %h4 支援者情報
-      %p メールアドレス
-      %textarea.span12
-      %p パスワード
-      %textarea.span12
-      %p パスワードの再確認
-      %textarea.span12
-      %p アイコン
-      =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
-      %button.btn.btn-inverse ファイルを選択
-
-      %p.text-error
-        ここでメールアドレス、パスワード、ユーザーネーム、アイコンを聞いているのだが、なぜかわからない・・・。
-        アイコンはわかるけれど、ログインしていなければこの画面まで来れないので、ここの入力は要らないのでは？
-        （要るのであればそのためにデータベースを修正するのでどういう用途か教えて下さい）
 
     .span4.well
       %h4 クラウドファウンディングって？
       %p
         クラウドファウンディングは、不特定多数の人から資金を集める行為である。 群衆(crowd)と資金調達(funding)を組み合わせた造語で、製品開発やイベントの開催、 チャリティなどの用途で利用されることが多い。ソーシャルファンディングとも呼ばれる。
 
-
-  .row-fluid
-    .span8.well
-      %h4 コメント内容
-      = form_for @support do |f|
-        = f.text_area :comment ,:rows => 5, :class => "span12", :placeholder => "コメントを入力しましょう！"
-        = f.hidden_field :project_id, :value => @project.id
-        = f.hidden_field :user_id, :value => @user.id if user_signed_in?
-        = f.hidden_field :reward_id
-        = f.hidden_field :amount
-        = submit_tag "決済手続きへ進む", :class => "btn btn-primary", :id => "support-submit"
-
-      -#Paypalへのpost
-      = form_tag 'https://www.sandbox.paypal.com/cgi-bin/webscr', :method => '/post' do |f|
-
-        -#hidden_field
-        = hidden_field :cmd, :value => "_s-xclick"
-        = hidden_field :hosted_button_id, :value => @project.payment_tag
-        -#動的に変更しないと
-        = hidden_field :on0, :value => "オプション1"
-        = hidden_field :currency_code, :value => "JPY"
