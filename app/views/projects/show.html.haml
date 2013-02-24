@@ -39,7 +39,7 @@
     .span12
       達成率
     .span12
-      = link_to "#{@project.id}/procedure" do
+      = link_to :controller => "projects", :action => "procedure" do
         %button{:class => "btn btn-success", :type => "button"}>
           このプロジェクトを支援する
     .span12
