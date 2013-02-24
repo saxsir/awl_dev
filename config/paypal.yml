@@ -1,0 +1,14 @@
+development: &sandbox # change to your own
+  username: sell.m_1357901090_biz_api1.gmail.com
+  password: 1357901106
+  signature: A2uwP5aMmgJLzo97zypBw4mQqMXJAVvhjYtc2kWbpVYJR3L9R.BbjYoS
+  sandbox: true
+
+test:
+  <<: *sandbox
+
+production: &production
+  username: SET_YOUR_OWN
+  password: SET_YOUR_OWN
+  signature: SET_YOUR_OWN
+  sandbox: false
