@@ -132,7 +132,7 @@
   .row-fluid
     .span8.well
       %h4 コメント内容
-      = form_for @support, :remote => true do |f|
+      = form_for @support do |f|
         = f.text_area :comment ,:rows => 5, :class => "span12", :placeholder => "コメントを入力しましょう！"
         = f.hidden_field :project_id, :value => @project.id
         = f.hidden_field :user_id, :value => @user.id if user_signed_in?

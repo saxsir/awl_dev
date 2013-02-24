@@ -16,40 +16,26 @@ class SupportsController < ApplicationController
   def create
     @support = Support.new(params[:support])
 
-    #ここでバリデーションしたい
-
-    #とりあえずfalseにする。paypalからリダイレクトがあればtrueにする
-    @support.success = false
+    #ここでバリデーション
 
 
-    respond_to do |format|
-      if @support.save
-      	#うまく行ってたらparent(プロジェクトページ)にnoticeつきで飛ばす
+    if @support.save
 
-            #paypalにつないでみる
+      request = Paypal::Express::Request.new PAYPAL_CONFIG
 
-        request = Paypal::Express::Request.new(
-          :username   => "sell.m_1357901090_biz_api1.gmail.com",
-          :password   => "1357901106",
-          :signature  => "A2uwP5aMmgJLzo97zypBw4mQqMXJAVvhjYtc2kWbpVYJR3L9R.BbjYoS"
-        )
-        payment_request = Paypal::Payment::Request.new(
-          :currency_code => :JPY, # if nil, PayPal use USD as default
-          :amount        => "5000",
-          :description   => "reward_description"
-        )
-        response = request.setup(
-          payment_request,
-          "http://localhost:3000",#payment成功時のコールバック
-          "http://localhost:3000"#キャンセル時のコールバック
-          )#成功時とキャンセル時のそれぞれで、tokenとpayerIDを取得できる。s
-        redirect_to response.redirect_uri
+      payment_request = Paypal::Payment::Request.new(
+        :currency_code => :USD, # if nil, PayPal use USD as default
+        :amount        => @support.amount,
+        :description   => @support.reward.description
+      )
+      response = request.setup(
+        payment_request,
+        root_url,#payment成功時のコールバック
+        root_url#キャンセル時のコールバック
+        )#成功時とキャンセル時のそれぞれで、tokenとpayerIDを取得できる。s
+      redirect_to response.redirect_uri
+    else
 
-       	#成功時とエラー時にそれぞれnoticeを送るようにしたい。つうかバリデーション
-      else
-        #format.html { render action: "new" }
-        #format.json { render json: @support.errors, status: :unprocessable_entity }
-      end
     end
   end
 
