@@ -24,14 +24,14 @@ class SupportsController < ApplicationController
       request = Paypal::Express::Request.new PAYPAL_CONFIG
 
       payment_request = Paypal::Payment::Request.new(
-        :currency_code => :USD, # if nil, PayPal use USD as default
+        :currency_code => :JPY, # if nil, PayPal use USD as default
         :amount        => @support.amount,
         :description   => @support.reward.description
       )
       response = request.setup(
         payment_request,
-        root_url,#payment成功時のコールバック
-        root_url#キャンセル時のコールバック
+        success_support_url,#payment成功時のコールバック
+        cancecl_support_url#キャンセル時のコールバック
         )#成功時とキャンセル時のそれぞれで、tokenとpayerIDを取得できる。s
       redirect_to response.redirect_uri
     else
@@ -39,6 +39,15 @@ class SupportsController < ApplicationController
     end
   end
 
+  #payment成功時にコールバックされる
+  def success
+
+  end
+
+  #cansel時
+  def cancecl
+
+  end
 
   def paypal_api_error(e)
     redirect_to root_url, error: e.response.details.collect(&:long_message).join('<br />')

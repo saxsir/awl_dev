@@ -2,20 +2,23 @@
 AwlDev::Application.routes.draw do
 
   root :to => "home#index"
-  
+
   get '/about' => "home#about"
 
   devise_for :users
 
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  
+
   resources :supports
+  get '/supports/success/:token' => ':supports#success'
+  get '/supports/cancel/:token' => ':supports#cancel'
+  get '/supports/failed/:token' => ':supports#failed'
 
   resources :rewards
 
   # thanksを上に書かないと、show/:id とコンフリクトする
-  get 'projects/thanks' => 'projects#thanks'  
+  get 'projects/thanks' => 'projects#thanks'
   get 'projects/:id/procedure' => 'projects#procedure'
   resources :projects
 
