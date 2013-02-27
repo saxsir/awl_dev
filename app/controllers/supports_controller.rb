@@ -34,7 +34,7 @@ class SupportsController < ApplicationController
     redirect_to project_url(support.project_id)
   end
 
-  #cansel時
+  #cancel時
   def cancel
     support = Support.find_by_token! params[:token]
     support.cancel!
