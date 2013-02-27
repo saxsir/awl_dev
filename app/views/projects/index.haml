@@ -5,7 +5,7 @@
 
     -# New Arrival用
       - @projects.each do |project|
-      - if project.slideshow?  #こういう書き方合ってるんかね？→たぶん合ってる。thenなくても大丈夫（http://railsapps.github.com/rails-default-application-layout.html）
+      - if project.slideshow?
         %h3= project.title
         %p= project.headline
         %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}

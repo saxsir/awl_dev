@@ -2,9 +2,6 @@
 = content_for :page_title do
   %h2.page-title<
     =@project.title
-- if notice
-  %p#notice
-    = flash[:notice]
 .row-fluid
   .span7.content
     #project-image
@@ -23,19 +20,27 @@
     #partner
       %h3>
         パートナー
-      - 12.times do
-        .user-icon.span2
-          =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
-          %span.comment
-            コメントですよ。
+      - @project.supports.each do |support|
+        - if support.completed?
+          .user-icon.span2
+            .comment{:title => support.comment, "data-toggle" => "tooltip"}
+              =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+            %p= support.user.username if defined?(support.user.username)
   .span5.well
     .span12
       現在の支援額
+      %h4= "#{@project.total_amount}円"
       .row-fluid
         .span6
           パートナー
+          - partner = 0
+          - @project.supports.each do |support| #Dirty?
+            - partner += 1 if support.completed?
+          %strong= "#{partner}人"
         .span6
           残り
+          - remain_amount = @project.target_amount - @project.total_amount
+          %strong= "#{remain_amount}円"
     .span12
       達成率
     .span12
