@@ -22,26 +22,25 @@
                 %ul.nav.pull-right
                   %li.divider-vertical
                   %li>
-                    = link_to 'home', root_path
+                    = link_to 'About', about_path
                   %li.divider-vertical
                   %li>
-                    = link_to 'projects', projects_path
+                    = link_to 'Projects', projects_path
                   %li.divider-vertical
-                  %li>
-                    = link_to 'about', about_path
-                  %li.divider-vertical
+
                   -if user_signed_in?
                     %li>
-                      = link_to 'mypage', mypage_index_path(:username => current_user.username)
+                      = link_to 'Mypage', mypage_index_path(:username => current_user.username)
                     %li.divider-vertical
                     %li>
-                      = link_to 'logout', destroy_user_session_path, :method => :delete
+                      = link_to 'Logout', destroy_user_session_path, :method => :delete
                   -else
                     %li>
-                      = link_to 'login', new_user_session_path
+                      %a#nav_login{"data-toggle" => "popver"} Login
+
                     %li.divider-vertical
                     %li>
-                      = link_to 'signup', new_user_registration_path
+                      = link_to 'Signup', new_user_registration_path
                   %li.divider-vertical
     = yield :page_title
     .container.main
