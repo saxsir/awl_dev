@@ -10,10 +10,13 @@ AwlDev::Application.routes.draw do
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  resources :supports
-  get '/supports/success/:token' => ':supports#success'
-  get '/supports/cancel/:token' => ':supports#cancel'
-  get '/supports/failed/:token' => ':supports#failed'
+  resources :supports do
+    collection do
+      get 'success',:as => "success"
+      get 'cancel', :as => "cancel"
+      get 'failed'
+    end
+  end
 
   resources :rewards
 
