@@ -14,40 +14,46 @@ class SupportsController < ApplicationController
    # POST /supports
   # POST /supports.json
   def create
-    @support = Support.new(params[:support])
+    support = Support.create! params[:support]
 
     #ここでバリデーション
 
-
-    if @support.save
-
-      request = Paypal::Express::Request.new PAYPAL_CONFIG
-
-      payment_request = Paypal::Payment::Request.new(
-        :currency_code => :JPY, # if nil, PayPal use USD as default
-        :amount        => @support.amount,
-        :description   => @support.reward.description
-      )
-      response = request.setup(
-        payment_request,
-        success_support_url,#payment成功時のコールバック
-        cancecl_support_url#キャンセル時のコールバック
-        )#成功時とキャンセル時のそれぞれで、tokenとpayerIDを取得できる。s
-      redirect_to response.redirect_uri
-    else
-
-    end
+    support.setup!(
+      success_supports_url,
+      cancel_supports_url
+    )
+    #logger.info "support.redirect_uri : #{support.redirect_uri}"
+    redirect_to support.redirect_uri
   end
 
-  #payment成功時にコールバックされる
+  #support成功時にコールバックされる
   def success
-
+    support = Support.find_by_token! params[:token]
+    support.complete!(params[:PayerID])
+    flash[:notice] = 'Paypal Transaction Completed'
+    redirect_to project_url(support.project_id)
   end
 
   #cansel時
-  def cancecl
-
+  def cancel
+    support = Support.find_by_token! params[:token]
+    support.cancel!
+    flash[:error] = 'Paypal Request Canceled'
+    redirect_to project_url(support.project_id)
   end
+
+
+    private
+
+    def handle_callback
+      support = Support.find_by_token! params[:token]
+      @redirect_uri = yield support
+      if support.popup?
+        render :close_flow, layout: false
+      else
+        redirect_to @redirect_uri
+      end
+    end
 
   def paypal_api_error(e)
     redirect_to root_url, error: e.response.details.collect(&:long_message).join('<br />')
