@@ -68,6 +68,12 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
 
+    # stateはここで追加。バリデーション書くならここで。
+    # new, pending, open, success, failedだっけ？
+    @project.user_id = current_user.id
+    @project.total_amount = 0
+    @project.state = "new"
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
