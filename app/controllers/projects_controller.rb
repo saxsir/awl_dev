@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!, :only => :new
   # GET /projects
   # GET /projects.json
   def index
@@ -42,11 +43,18 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
-    @project = Project.new
+    # アーティスト以外は作成できない
+    unless current_user.artist
+        # 権限がないですよ的なページに飛ばす
+        # あとでつくる
+        redirect_to :action => "index", :status => :forbidden
+    else
+      @project = Project.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @project }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @project }
+      end
     end
   end
 
