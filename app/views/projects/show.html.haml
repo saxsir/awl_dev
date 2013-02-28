@@ -48,10 +48,10 @@
         %button{:class => "btn btn-success", :type => "button"}>
           このプロジェクトを支援する
     .span12
-      %ul
+      %dl.dl-horizontal
       -@project.rewards.each do |reward|
-        %li
+        %dt
           = reward.title
-          %p
-            = reward.description
+        %dd
+          = reward.description
 
