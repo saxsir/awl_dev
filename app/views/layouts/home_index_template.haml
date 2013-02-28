@@ -56,7 +56,7 @@
                       = link_to 'logout', destroy_user_session_path, :method => :delete
                   -else
                     %li>
-                      = link_to 'login', new_user_session_path
+                      %a#nav_login{"data-toggle" => "popver"} Login
                     %li.divider-vertical
                     %li>
                       = link_to 'signup', new_user_registration_path

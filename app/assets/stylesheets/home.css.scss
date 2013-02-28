@@ -4,6 +4,10 @@
 body#home {
   padding: 0px;
   color: white;
+
+  .popover {
+    color:black;
+  }
   #cover {
     background-color: black;
     height: 430px;
@@ -26,7 +30,7 @@ body#home {
         background-color: black;
         height: 390px;
         margin: 20px 0px;
-        
+
         /* 各ブラウザ用に透明度セット */
         filter:alpha(opacity=80); /* For IE*/
         -moz-opacity: 0.8; /* For Mozilla (Firefox) */
@@ -35,13 +39,13 @@ body#home {
         .container {
           margin: 0 auto;
           padding-top: 140px;
-          
+
           h2#awl-phrase {
             font-size: 18px;
           }
         }
       }
-    } 
+    }
   } /* /#cover */
 
   #navigation {
@@ -52,7 +56,7 @@ body#home {
     .navbar {
       width: 100%;
       z-index: 1;
-    } 
+    }
   } /* /#navigation */
 
   .container {
@@ -78,10 +82,10 @@ body#home {
 
     #cover {
       height: 200px;
-      
+
       #bg {
         height: 200px;
-        
+
         #welcome {
           height: 180px;
           margin: 10px 0px;
