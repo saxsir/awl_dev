@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*- 
+# -*- encoding: utf-8 -*-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -55,7 +55,7 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
     p.total_amount = 10000 * 1
     p.target_amount = 15000 * (i+1)
     p.url = ""
-    p.image_url = 'http://web.sfc.keio.ac.jp/~s10363ss/awl_sample.jpeg'
+    p.image_url = 'http://cambelt.co/400x300/Project+Image?color=234653,eeeeee'
     if i%2 == 0
       p.user_id = 2 #artist
     else
@@ -64,7 +64,9 @@ Project.connection.execute("delete from sqlite_sequence where name='projects'")
     #ここでpayment_tagを生成するアルゴリズムを書く
     p.payment_tag = '4ZFXVTD83UMRG'
     p.headline="見出し文"
-     p.slideshow = true if i%3 == 0 # とりあえず３つくらい
+    p.slideshow = true if i%3 == 0 # とりあえず３つくらい
+    deadline = Time.now
+    p.deadline = deadline + 3*(i+1)
   end
 end
 
