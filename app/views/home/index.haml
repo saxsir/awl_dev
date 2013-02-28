@@ -32,11 +32,12 @@
 %section#project-list
   %h3>
     PROJECTs
+  %hr
   - # とりあえずコントローラーではslideshowカラムがtrueのプロジェクトのみ取得している
   - # スライドショーの下のProjectsに、スライドショーに流れるのと同じプロジェクトのみ表示するのか, 全部表示するのか...
-  #grid
+  .row
     - @projects.each do |project|
-      .item
+      .span4
         %h4= project.title
         = link_to project do
           %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
