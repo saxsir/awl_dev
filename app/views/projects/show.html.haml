@@ -26,8 +26,8 @@
             .comment{:title => support.comment, "data-toggle" => "tooltip"}
               =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
             %p= support.user.username if defined?(support.user.username)
-  .span4.well
-    .span12
+  .span4.content#right
+    .span12#amount
       .inline
         現在の支援額
         .pull-right
@@ -37,7 +37,7 @@
           円
       %h2= "¥#{@project.total_amount}円"
       %hr
-      .span12
+      .span12#support-data
         .span6
           パートナー
           - partner = 0
@@ -48,19 +48,18 @@
           残り
           %h2.pull-right 00日
       %hr
-    .span12
+    .span12#progress
       .progress.progress-striped.active
         - percentage = @project.total_amount.to_f / @project.target_amount.to_f * 100
         .bar(style='width:#{percentage}%;')
       %h4
         達成率
         =percentage.to_i.to_s + '%'
-      %hr
-    .span12
-      = link_to :controller => "projects", :action => "procedure" do
-        %button.btn.btn-success
-          このプロジェクトを支援する
-    .span12
+    = link_to :controller => "projects", :action => "procedure" do
+      .span12#button-support
+        -#%button.btn.btn-success.btn-large
+        %h3 このプロジェクトを支援する
+    .span12#rewards
       -@project.rewards.each do |reward|
         %hr
         %h4= "¥#{reward.amount}支援すると"
