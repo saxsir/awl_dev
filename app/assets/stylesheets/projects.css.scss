@@ -7,13 +7,20 @@ body#project-page {
   }
 
   #project-image {}
-  #project-desc {}
+  #project-desc {
+    padding-left: 10px;
+
+  }
   #partner {
+    padding-left:10px;
+
     .user-icon {
       margin-bottom: 10px;
     }
 
-    div.user-icon:hover { /*マウスが乗ったら*/
+
+    /*bootstrap-popoverに変えてみる
+    div.user-icon:hover { /*マウスが乗ったら
       position: relative;
       top: 0px; left: 0px;
     }
@@ -40,6 +47,8 @@ body#project-page {
     div.user-icon:hover .comment {
       display: block;
     }
+
+    */
   }
 }
 

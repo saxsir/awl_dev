@@ -2,13 +2,10 @@
 = content_for :page_title do
   %h2.page-title<
     =@project.title
-- if notice
-  %p#notice
-    = flash[:notice]
 .row-fluid
-  .span7.content
+  .span8.content
     #project-image
-      =image_tag('http://cambelt.co/670x300/Project+Image')
+      =image_tag('http://cambelt.co/800x300/Project+Image')
     #project-desc
       %h3>
         = "クリエイター名：" + @project.user.username
@@ -23,30 +20,51 @@
     #partner
       %h3>
         パートナー
-      - 12.times do
-        .user-icon.span2
-          =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
-          %span.comment
-            コメントですよ。
-  .span5.well
+      - @project.supports.each do |support|
+        - if support.completed?
+          .user-icon.span2
+            .comment{:title => support.comment, "data-toggle" => "tooltip"}
+              =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+            %p= support.user.username if defined?(support.user.username)
+  .span4.well
     .span12
-      現在の支援額
+      .inline
+        現在の支援額
+        .pull-right
+          目標支援額
+          %b
+            = @project.target_amount
+          円
+      %h2= "¥#{@project.total_amount}円"
+      %hr
       .row-fluid
         .span6
           パートナー
+          - partner = 0
+          - @project.supports.each do |support| #Dirty?
+            - partner += 1 if support.completed?
+          %h2.pull-right= "#{partner}人"
         .span6
           残り
+          %h2.pull-right 00日
+      %hr
     .span12
-      達成率
+      .progress.progress-striped.active
+        - percentage = @project.total_amount.to_f / @project.target_amount.to_f * 100
+        .bar(style='width:#{percentage}%;')
+      %h4
+        達成率
+        =percentage.to_i.to_s + '%'
+      %hr
     .span12
       = link_to :controller => "projects", :action => "procedure" do
-        %button{:class => "btn btn-success", :type => "button"}>
+        %button.btn.btn-success
           このプロジェクトを支援する
     .span12
-      %ul
+      %dl.dl-horizontal
       -@project.rewards.each do |reward|
-        %li
+        %dt
           = reward.title
-          %p
-            = reward.description
+        %dd
+          = reward.description
 

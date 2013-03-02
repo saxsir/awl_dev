@@ -19,14 +19,15 @@
 
 /* Top Padding for responsive navbar-top-fixed */
 body { /* Add top padding for full-width layout */
-  padding-top: 40px;
+  padding-top: 50px;
   padding-bottom: 40px;
-  background-color: #666;
+  background-color: rgb(61,64,63);
 
   h2.page-title {
     background-color: black;
     color: white;
     margin: 20px 0px;
+    padding:10px;
     text-align: center;
   }
 
@@ -55,6 +56,6 @@ body { /* Add top padding for full-width layout */
     padding-top: 0;
   }
 }
-
-
-
+hr {
+  color : red;
+}

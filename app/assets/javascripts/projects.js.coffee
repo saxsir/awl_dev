@@ -11,6 +11,10 @@ jQuery ->
   $('.carousel').carousel('cycle')
 
 
+# ShowのTooltip
+jQuery ->
+	$('.comment').tooltip()
+
 #Procedureのシングルページでの遷移の実装
 #だんだん良くないことをしているような気がしてきた
 jQuery ->
