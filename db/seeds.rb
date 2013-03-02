@@ -24,7 +24,7 @@ User.create! do |u|
   u.email = "awl_dev+artist@gmail.com"
   u.password = "artistpass"
   u.password_confirmation = "artistpass"
-  u.artist = false
+  u.artist = true
 end
 
 
