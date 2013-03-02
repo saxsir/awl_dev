@@ -7,7 +7,7 @@
     #project-image
       =image_tag('http://cambelt.co/800x300/Project+Image')
     #project-desc
-      %h3>
+      %h4>
         = "クリエイター名：" + @project.user.username
       %p{"jg" => "jTruncSubstr", "jg:jTruncSubstr" => "length:140, moreText:'もっと見る', lessText:'閉じる', lessAni:0"}
         = # 63文字 × 5行
@@ -18,7 +18,7 @@
         プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
       %hr
     #partner
-      %h3>
+      %h4>
         パートナー
       - @project.supports.each do |support|
         - if support.completed?
@@ -37,7 +37,7 @@
           円
       %h2= "¥#{@project.total_amount}円"
       %hr
-      .row-fluid
+      .span12
         .span6
           パートナー
           - partner = 0
@@ -61,10 +61,14 @@
         %button.btn.btn-success
           このプロジェクトを支援する
     .span12
-      %dl.dl-horizontal
       -@project.rewards.each do |reward|
-        %dt
-          = reward.title
-        %dd
-          = reward.description
+        %hr
+        %h4= "¥#{reward.amount}支援すると"
+        %br
+        %p= reward.description
+        %br
+        #reward-partner
+          %i.icon-hand-right
+          %strong= "#{reward.support.length}/30 Partner"
+        %br
 
