@@ -12,9 +12,9 @@
     %br/
     = f.text_field :title
   .field
-    = f.label :user_id
+    = f.label :headline
     %br/
-    = f.number_field :user_id
+    = f.text_field :headline
   .field
     = f.label :url
     %br/
@@ -24,14 +24,8 @@
     %br/
     = f.number_field :target_amount
   .field
-    = f.label :total_amount
+    = f.label :deadline
     %br/
-    = f.number_field :total_amount
-  .field
-    = f.label :payment_tag
-    %br/
-    = f.text_area :payment_tag
-  .field
     = f.datetime_select :deadline
     %br/
   .actions

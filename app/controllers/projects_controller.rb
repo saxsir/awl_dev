@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!, :only => :new
   # GET /projects
   # GET /projects.json
   def index
@@ -42,11 +43,18 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
-    @project = Project.new
+    # アーティスト以外は作成できない
+    unless current_user.artist
+        # 権限がないですよ的なページに飛ばす
+        # あとでつくる
+        redirect_to :action => "index", :status => :forbidden
+    else
+      @project = Project.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @project }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @project }
+      end
     end
   end
 
@@ -59,6 +67,12 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+
+    # stateはここで追加。バリデーション書くならここで。
+    # new, pending, open, success, failedだっけ？
+    @project.user_id = current_user.id
+    @project.total_amount = 0
+    @project.state = "new"
 
     respond_to do |format|
       if @project.save
