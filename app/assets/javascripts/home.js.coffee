@@ -10,9 +10,13 @@ $ ->
   $("#nav_login_home").popover
     html: true
     offset: 5
-    placement: "top"
+    placement: get_popover_placement
     title: "ログイン"
     content: login_form_tag_home
 
-
-# scrollspyしてplacementをbottomにする
+# ウィンドウがある程度スクロールされていたらplacementをbottomにする
+get_popover_placement = (dom_el)->
+	scroll = $(window).scrollTop();
+	#console.log(scroll)
+	return "bottom" if scroll > 220
+	return "top"
