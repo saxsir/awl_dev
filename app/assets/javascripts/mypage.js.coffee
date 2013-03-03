@@ -11,6 +11,11 @@ $(document).ready ->
     e.preventDefault()
     $(this).tab "show"
     $("body#mypage .left-content").height $("body#mypage .right-content").height()
-  
+
   # 最初の要素を表示
   $("#profile-tab a:first").tab "show"
+
+  # マイページ編集をWYSIWYGに
+  $("body#mypage .right-content").freshereditor("edit", true)
+  $("body#mypage .right-content").on 'change', ->
+    console.log("content changed")
