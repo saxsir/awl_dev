@@ -86,15 +86,25 @@
         .tab-pane#profile
           .row-fluid
             .span12
-              ユーザー情報
-            .span12
-              %p
-                メールアドレス
-              %p
-                パスワード
-              %p
-                ユーザーネーム
-              %p
-                アイコン
+              %h4 ユーザー情報
+              %hr
+              .span4
+                %p メールアドレス
+                %p パスワード
+                %p ユーザーネーム
+                %p アイコン
+                %p.text-info#profile-image-subscription
 
+              .span4
+                %p.editable= @user.email
+                %p.editable= "**********"
+                %p.editable= @user.username
+                =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+                %button.btn-success#fileLoader ファイルを選択
+              .span3.pull-right.well
+                %p#edit-subscription
+                  「編集する」ボタンを押すと、ユーザー情報をクリックして編集可能になります！
+                %br
+                %button.btn.btn-inverse#edit-button 編集する
+                %button.btn.btn-primary#save-button 保存する
 

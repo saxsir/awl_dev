@@ -37,7 +37,7 @@ body#mypage {
 
     .span12 {
       margin-left: 0px;
-    } 
+    }
 
     #partner {
       border-right: 1px solid #ddd;
@@ -49,8 +49,15 @@ body#mypage {
     margin-bottom: 20px;
     padding: 10px;
 
+    #save-button{
+      display: none;
+    }
+    #fileLoader{
+      display:none;
+    }
+
     .span12 {
       margin-left: 0px;
-    } 
+    }
   } /* /#profile */
 }

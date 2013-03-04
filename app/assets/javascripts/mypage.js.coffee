@@ -15,7 +15,23 @@ $(document).ready ->
   # 最初の要素を表示
   $("#profile-tab a:first").tab "show"
 
-  # マイページ編集をWYSIWYGに
-  $("body#mypage .right-content").freshereditor("edit", true)
-  $("body#mypage .right-content").on 'change', ->
-    console.log("content changed")
+
+  # 編集するボタンが押される
+  $("#edit-button").click ->
+    $("#fileLoader").show("blind",10)
+    $("#edit-button").hide("blind",10)
+    $("#save-button").show("blind",10)
+    $("#edit-subscription").text("編集が終了したら「保存する」ボタンを押して下さい！")
+    $("#profile-image-subscription").text("アイコンは画像ファイルをドラッグ&ドロップすることでもアップロード出来ます。")
+	  # マイページ編集をWYSIWYGに
+    $(".editable").freshereditor("edit", true)
+
+	# 保存するボタンが押される
+  $("#save-button").click	->
+    $("#fileLoader").hide("blind",10)
+    $("#save-button").hide("blind",10)
+    $("#edit-button").show("blind",10)
+    $("#edit-subscription").text("「編集する」ボタンを押すと、ユーザー情報をクリックして編集可能になります！")
+    $("#profile-image-subscription").text("")
+    # マイページ編集をWYSIWYGに
+    $(".editable").freshereditor("edit", false)
