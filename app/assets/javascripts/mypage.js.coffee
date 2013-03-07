@@ -15,6 +15,9 @@ $(document).ready ->
   # 最初の要素を表示
   $("#profile-tab a:first").tab "show"
 
+  # modal
+  $("#modal-confirm").modal
+
 
   # 編集するボタンが押される
   $("#edit-button").click ->
@@ -26,8 +29,14 @@ $(document).ready ->
 	  # マイページ編集をWYSIWYGに
     $(".editable").freshereditor("edit", true)
 
-	# 保存するボタンが押される
-  $("#save-button").click	->
+
+  # 保存するボタンが押される
+  $("#save-button").click ->
+    $("#modal-email").text($(".editable#email").text())
+    $("#modal-username").text($(".editable#username").text())
+
+	# 変更するボタンが押される
+  $("#change-button").click	->
     $("#fileLoader").hide("blind",10)
     $("#save-button").hide("blind",10)
     $("#edit-button").show("blind",10)
@@ -35,3 +44,5 @@ $(document).ready ->
     $("#profile-image-subscription").text("")
     # マイページ編集をWYSIWYGに
     $(".editable").freshereditor("edit", false)
+
+

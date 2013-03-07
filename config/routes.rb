@@ -25,6 +25,7 @@ AwlDev::Application.routes.draw do
   get 'projects/:id/procedure' => 'projects#procedure'
   resources :projects
 
+  resources :users, :only => [:edit, :update]
   get '/mypage/:username' => 'mypage#index', :as => 'mypage_index'
   get '/mypage/:username/edit' => 'mypage#edit'
   get '/mypage/:username/error' => 'mypage#error'

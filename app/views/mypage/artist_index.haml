@@ -91,15 +91,15 @@
               %hr
               .span4
                 %p メールアドレス
-                %p パスワード
                 %p ユーザーネーム
+                %p パスワード
                 %p アイコン
                 %p.text-info#profile-image-subscription
 
               .span4
-                %p.editable= @user.email
-                %p.editable= "**********"
-                %p.editable= @user.username
+                %p.editable#email= @user.email
+                %p.editable#username= @user.username
+                %p.editable= "パスワード変更：未実装"
                 =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
                 %button.btn-success#fileLoader ファイルを選択
               .span3.pull-right.well
@@ -107,7 +107,26 @@
                   「編集する」ボタンを押すと、ユーザー情報をクリックして編集可能になります！
                 %br
                 %button.btn.btn-inverse#edit-button 編集する
-                %button.btn.btn-primary#save-button 保存する
+                %button.btn.btn-primary#save-button{:role => "button", "data-toggle" => "modal", "data-target" => "#modal-confirm"} 保存する
+
+              -#保存ボタンを押したときのmodal-window
+              #modal-confirm.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+                .modal-header
+                  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                  %h3#myModalLabel 編集内容の確認
+                .modal-body
+                  .row-fluid
+                    .span6
+                      %p メールアドレス
+                      %p ユーザー名
+                      %p アイコン
+                    .span6
+                      %p#modal-email
+                      %p#modal-username
+
+                .modal-footer
+                  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+                  %button.btn.btn-primary#change-button{"aria-hidden" => "true", "data-dismiss" => "modal"} Save changes
 
         /支援したプロジェクトリスト
         .tab-pane#project-list

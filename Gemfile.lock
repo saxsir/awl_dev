@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: 359fdd840c1bc55eb7ba5fdcf5b8dd8df02378d1
+  specs:
+    devise (2.2.3)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 5558b1da55f0fff6a6bbe9067acba3b0ec81f78c
   specs:
@@ -50,11 +60,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    devise (2.2.0)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
     erb2haml (0.1.2)
       haml
       hpricot
@@ -189,7 +194,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  devise
+  devise!
   erb2haml
   haml-rails
   jquery-rails
