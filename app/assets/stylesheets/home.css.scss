@@ -11,26 +11,26 @@ body#home {
 
   #cover {
     background-color: black;
-    height: 430px;
+    height: 240px;
+    background-image: image-url("home/Home_tile.png");
+    background-repeat: repeat;
 
     #bg {
       width: 100%;
-      height: 100%;
+      height: 220px;
       overflow: hidden;
       position: absolute;
       top: 0;
       left: 0;
       background: transparent;
       background-position: top center;
-      background-image: url("http://cambelt.co/430x430");
-      background-repeat: repeat-x;
 
       #welcome {
         position: relative;
         z-index: 2;
         background-color: black;
-        height: 390px;
-        margin: 20px 0px;
+        //height: 390px;
+        margin: 15px 0px;
 
         /* 各ブラウザ用に透明度セット */
         filter:alpha(opacity=80); /* For IE*/
@@ -39,7 +39,8 @@ body#home {
 
         .container {
           margin: 0 auto;
-          padding-top: 140px;
+          padding-top: 50px;
+          padding-bottom:50px;
 
           h2#awl-phrase {
             font-size: 18px;
