@@ -124,6 +124,9 @@
                       %p#modal-username
 
                 .modal-footer
-                  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-                  %button.btn.btn-primary#change-button{"aria-hidden" => "true", "data-dismiss" => "modal"} Save changes
+                  = form_for @user do |f|
+                    = f.hidden_field :email
+                    = f.hidden_field :username
+                    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+                    = submit_tag "Save Changes", :class => "btn btn-primary", :id => "change-button"
 

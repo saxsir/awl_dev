@@ -41,6 +41,8 @@ $(document).ready ->
   $("#save-button").click ->
     $("#modal-email").text($(".editable#email").text())
     $("#modal-username").text($(".editable#username").text())
+    $("#hidden-email").val($(".editable#email").text())
+    $("#hidden-username").val($(".editable#username").text())
 
 	# 変更するボタンが押される
   $("#change-button").click	->
