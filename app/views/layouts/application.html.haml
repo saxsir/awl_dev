@@ -20,28 +20,21 @@
               = link_to 'AWL', root_path, :class => 'brand'
               .nav-collapse
                 %ul.nav.pull-right
-                  %li.divider-vertical
                   %li>
-                    = link_to 'About', about_path
-                  %li.divider-vertical
+                    = link_to image_tag('About.png'), about_path
                   %li>
-                    = link_to 'Projects', projects_path
-                  %li.divider-vertical
-
+                    = link_to image_tag('Project.png'), projects_path
                   -if user_signed_in?
                     %li>
                       = link_to 'Mypage', mypage_index_path(:username => current_user.username)
-                    %li.divider-vertical
-                    %li>
+                    %li#last>
                       = link_to 'Logout', destroy_user_session_path, :method => :delete
                   -else
                     %li>
-                      %a#nav_login{"data-toggle" => "popover"} Login
-
-                    %li.divider-vertical
-                    %li>
-                      = link_to 'Signup', new_user_registration_path
-                  %li.divider-vertical
+                      %a#nav_login_home{"data-toggle" => "popover"}
+                        = image_tag('Log-in.png')
+                    %li#last>
+                      = link_to image_tag('Sign-up.png'), new_user_registration_path
     = yield :page_title
     .container.main
       = render :partial => "layouts/flash_messages", :locals => {:flash => flash}
