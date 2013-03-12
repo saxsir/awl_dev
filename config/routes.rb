@@ -29,7 +29,6 @@ AwlDev::Application.routes.draw do
   get '/mypage/:username' => 'mypage#index', :as => 'mypage_index'
   get '/mypage/:username/edit' => 'mypage#edit'
   get '/mypage/:username/error' => 'mypage#error'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

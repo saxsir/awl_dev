@@ -5,7 +5,7 @@ class MypageController < ApplicationController
   # GET /mypage/:username
   def index
     @user = User.find(:all, :conditions => ['username = ?', params[:username]])
-    
+
     if @user.empty?
       # 該当ユーザーなし
       redirect_to :action => "error"
@@ -22,11 +22,11 @@ class MypageController < ApplicationController
 
   # GET /mypage/:username/edit
   def edit
-    
+
   end
 
   # GET /mypage/:username/error
   def error
-    
+
   end
 end
