@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
     unless current_user.artist
         # 権限がないですよ的なページに飛ばす
         # あとでつくる
-        redirect_to :action => "index", :status => :forbidden
+        redirect_to root_path, :notice => "Permission Error: You Don't have...."
     else
       @project = Project.new
 
@@ -111,6 +111,11 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
+  end
+
+  def image
+    @project = Project.find(params[:id])
+    send_data(@project.image, :type => @project.content_type)
   end
 
   # GET /projects/thanks

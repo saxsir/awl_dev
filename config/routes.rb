@@ -23,7 +23,11 @@ AwlDev::Application.routes.draw do
   # thanksを上に書かないと、show/:id とコンフリクトする
   get 'projects/thanks' => 'projects#thanks'
   get 'projects/:id/procedure' => 'projects#procedure'
-  resources :projects
+  resources :projects do
+    member do
+      get :image
+    end
+  end
 
   resources :users, :only => [:edit, :update]
   get '/mypage/:username' => 'mypage#index', :as => 'mypage_index'

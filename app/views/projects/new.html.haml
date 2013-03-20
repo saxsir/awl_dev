@@ -1,3 +1,58 @@
-%h1 New project
-= render 'form'
-= link_to 'Back', projects_path
+- @body_id = "project-new"
+= content_for :page_title do
+  %h2.page-title プロジェクト作成
+
+#new_page_1
+  .row-fluid
+    .span8.well
+      = simple_form_for @project do |f|
+        %h5 プロジェクトタイトル
+        = f.input :title,:label => false,:input_html => {:class => "span8"}
+        %h5 カテゴリ
+        = f.input :category,:label => false,:input_html => {:class => "span8"}
+        %h5 プロジェクト内容
+        = f.input :description,:label => false,:input_html => {:class => "span8",:row => 5}
+        %h5 サムネイル画像
+        .inline
+          = f.input :image,:label => false, :input_html => {:class => "span8",accept: ('image/*')}
+        %br
+        %h5 目標金額
+        .upload
+          = f.input :target_amount,:label => false,:input_html => {:class => "span7"}
+        %h5 募集期間
+        %input.number.span6
+        %h5 募集締め切り(入力フォームの提案です)
+        = f.input :deadline ,:label => false, as: :ui_date_picker
+
+        %h5 クリエイター情報
+
+
+    .span4.well
+      %h4 サムネイル画像
+      =image_tag('http://cambelt.co/720x480/No+Image')
+      %hr
+      .span12#amount
+        .inline
+          現在の支援額
+          .pull-right
+            目標支援額
+            %strong#target
+              ¥20,000
+        %h2= "¥20,000"
+        %hr
+        .span12#support-data
+          .span6
+            パートナー
+            - partner = 0
+            %h2.pull-right= "#{partner}人"
+          .span6
+            残り
+            %h2.pull-right#left-days 00日
+      .span12#progress
+        %hr
+        .progress.progress-striped.active
+          .bar(style='width:52%;')
+        .inline
+          達成率
+          %strong
+            52%
