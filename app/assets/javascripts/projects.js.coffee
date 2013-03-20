@@ -21,6 +21,10 @@ jQuery ->
 $ ->
   $('input.ui-date-picker').datepicker()
 
+  $('#nextButton-new').click ->
+    $('#new_page_1').hide('blind',500)
+    $('#new_page_2').show("clip",500)
+
 #Procedureのシングルページでの遷移の実装
 #だんだん良くないことをしているような気がしてきた
 jQuery ->

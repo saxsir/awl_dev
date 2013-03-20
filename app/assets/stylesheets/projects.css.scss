@@ -119,12 +119,17 @@ body#procedure
   button#nextButton{
     align: right;
   }
-
-  body#project-new{
-    .well{
-      border-radius: 0px;        /* CSS3草案 */
-      -webkit-border-radius: 0px;    /* Safari,Google Chrome用 */
-      -moz-border-radius: 0px;   /* Firefox用 */
-    }
+}
+body#project-new
+{
+  .well
+  {
+    border-radius: 0px;        /* CSS3草案 */
+    -webkit-border-radius: 0px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 0px;   /* Firefox用 */
+  }
+  #new_page_2
+  {
+    display: none;
   }
 }

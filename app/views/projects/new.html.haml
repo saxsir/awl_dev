@@ -11,7 +11,7 @@
         %h5 カテゴリ
         = f.input :category,:label => false,:input_html => {:class => "span8"}
         %h5 プロジェクト内容
-        = f.input :description,:label => false,:input_html => {:class => "span8",:row => 5}
+        = f.input :description,:label => false,:input_html => {:class => "span8",:rows => 4}
         %h5 サムネイル画像
         .inline
           = f.input :image,:label => false, :input_html => {:class => "span8",accept: ('image/*')}
@@ -25,9 +25,21 @@
         = f.input :deadline ,:label => false, as: :ui_date_picker
 
         %h5 クリエイター情報(審査段階で利用させて頂きます)
-        = f.input :twitter, as: :string, :label => false,:input_html => {:class => "span4"}
-        = f.input :facebook,as: :string,:label => false,:input_html => {:class => "span4"}
-        = f.input :web_site,as: :string,:label => false,:input_html => {:class => "span4"}
+        .inline
+          .span1
+            twitter
+          .span10.offset1
+            = f.url_field :twitter, :class => "span5"
+        .inline
+          .span1
+            Facebook
+          .span10.offset1
+            = f.url_field :facebook, :class => "span5"
+        .inline
+          .span2
+            Webサイト
+          .span10
+            = f.url_field :web_site, :class => "span5"
 
 
     .span4.well
@@ -59,3 +71,18 @@
           達成率
           %strong
             52%
+
+  .row-fluid
+    .span8
+      .span4
+      .span4
+        %button.btn.btn-inverse.btn-large 戻る
+        %button.btn.btn-success.btn-large#nextButton-new 次のページへ
+      .span4
+    .span4
+
+#new_page_2
+  .row-fluid
+    .span8.well
+      %h5 リワード入力
+    .span4.well
