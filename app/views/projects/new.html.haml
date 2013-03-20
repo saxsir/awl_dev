@@ -24,7 +24,10 @@
         %h5 募集締め切り(入力フォームの提案です)
         = f.input :deadline ,:label => false, as: :ui_date_picker
 
-        %h5 クリエイター情報
+        %h5 クリエイター情報(審査段階で利用させて頂きます)
+        = f.input :twitter, as: :string, :label => false,:input_html => {:class => "span4"}
+        = f.input :facebook,as: :string,:label => false,:input_html => {:class => "span4"}
+        = f.input :web_site,as: :string,:label => false,:input_html => {:class => "span4"}
 
 
     .span4.well
