@@ -74,15 +74,34 @@ class ProjectsController < ApplicationController
     @project.total_amount = 0
     @project.state = "new"
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
-      else
+    if @project.save
+      redirect_to :action => "reward", :id => @project.id
+    else
+      respond_to do |format|
         format.html { render action: "new" }
-        format.json { render json: @project.errors, notice: 'Failed' }
       end
     end
+  end
+
+  # GET /projects/new/rewards
+  def reward
+    @project = Project.find(params[:id])
+    @reward = Reward.new
+
+    respond_to do |format|
+
+      #rewardも正常にsaveされたら、とりあえずそのまま
+      # rewardの作成でfailedするかsessionが切れたら、@projectもdeleteする。
+
+
+      format.html # reward.html.haml
+      #format.json { render json: @project }
+      #format.json { render json: @reward }
+    end
+  end
+
+  def save_reward
+
   end
 
   # PUT /projects/1

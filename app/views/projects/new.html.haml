@@ -24,7 +24,7 @@
         %h5 募集期間
         = f.input :deadline,:label => false, :input_html => {:class => "span6 positive-integer"}
         %h5 募集開始を希望する日時
-        = f.input :start_day ,:label => false, as: :ui_date_picker
+        = f.input :start_day ,:label => false
 
         %h5 クリエイター情報(審査段階で利用させて頂きます)
         .inline
@@ -44,9 +44,8 @@
             = f.url_field :web_site, :class => "span5"
         .span4
         .span4
-          #go-top
-            %button.btn.btn-inverse.btn-large 戻る
-            = f.submit "次のページへ", :class => "btn btn-success btn-large", :id => "nextButton-new"
+          = link_to "戻る", root_path, :class => "btn btn-inverse btn-large"
+          = f.submit "次のページへ", :class => "btn btn-success btn-large"
         .span4
 
 
@@ -79,9 +78,3 @@
           達成率
           %strong
             52%
-
-#new_page_2
-  .row-fluid
-    .span8.well
-      %h5 リワード入力
-    .span4.well

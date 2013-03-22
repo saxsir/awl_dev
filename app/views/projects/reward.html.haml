@@ -1,0 +1,27 @@
+- @body_id = "project-new"
+= content_for :page_title do
+  %h2.page-title リワード作成
+
+.row-fluid
+  .span12
+    .span8.well
+      %h3 リワードの設定
+      = @reward
+
+      -# simple_form_for @reward do |f|
+
+        %h4 金額
+        = f.input :amount, :label => false, :input_html => {:class => "span8"}
+        %h4 リワード内容
+        = f.input :description, :label => false, :input_html => {:class => "span8", :rows=> 3}
+        %h4 個数制限
+        = f.input :qunatity_limit, :label => false,  :input_html => {:class => "span8"}
+
+        %hr
+
+        .span4.offset4
+          %h3 リワードを追加する
+
+
+
+    .span4.well

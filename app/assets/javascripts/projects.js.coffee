@@ -20,8 +20,6 @@ jQuery ->
 #newのシングルページ実装
 $ ->
   $('input.ui-date-picker').datepicker()
-  $('#go-top').click ->
-    scroll(0,0)
 
 #Procedureのシングルページでの遷移の実装
 #だんだん良くないことをしているような気がしてきた
