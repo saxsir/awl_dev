@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320175410) do
+ActiveRecord::Schema.define(:version => 20130322052241) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(:version => 20130320175410) do
     t.string   "url"
     t.integer  "target_amount"
     t.integer  "total_amount"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.text     "payment_tag"
     t.text     "image_url"
     t.text     "headline"
     t.boolean  "slideshow"
-    t.datetime "deadline"
+    t.integer  "deadline"
     t.string   "state"
     t.string   "category"
     t.text     "description"
@@ -62,6 +62,11 @@ ActiveRecord::Schema.define(:version => 20130320175410) do
     t.text     "twitter"
     t.text     "facebook"
     t.text     "web_site"
+    t.date     "start_day"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

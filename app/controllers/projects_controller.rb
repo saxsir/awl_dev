@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
  # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
+    @project = Project.new(params[:project],:user_id => current_user.id, :total_amount => 0, :state => "new")
 
     # stateはここで追加。バリデーション書くならここで。
     # new, pending, open, success, failedだっけ？
@@ -80,7 +80,7 @@ class ProjectsController < ApplicationController
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.json { render json: @project.errors, notice: 'Failed' }
       end
     end
   end
@@ -113,10 +113,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def image
-    @project = Project.find(params[:id])
-    send_data(@project.image, :type => @project.content_type)
-  end
 
   # GET /projects/thanks
   def thanks

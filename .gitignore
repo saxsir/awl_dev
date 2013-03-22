@@ -17,6 +17,9 @@
 # Ignore bundle
 /vendor/bundle
 
+# Ignore uploaded image file
+/public/system
+
 # Ignore temp file
 *.swp
 *~

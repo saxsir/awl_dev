@@ -5,11 +5,13 @@
 #new_page_1
   .row-fluid
     .span8.well
-      = simple_form_for @project do |f|
+      = simple_form_for @project,:html => { :multipart => true }  do |f|
         %h5 プロジェクトタイトル
         = f.input :title,:label => false,:input_html => {:class => "span8"}
         %h5 カテゴリ
         = f.input :category,:label => false,:input_html => {:class => "span8"}
+        %h5 見出し文
+        = f.input :headline,:label => false,:input_html => {:class => "span8",:rows => 2}
         %h5 プロジェクト内容
         = f.input :description,:label => false,:input_html => {:class => "span8",:rows => 4}
         %h5 サムネイル画像
@@ -18,11 +20,11 @@
         %br
         %h5 目標金額
         .upload
-          = f.input :target_amount,:label => false,:input_html => {:class => "span7"}
+          = f.input :target_amount,:label => false,:input_html => {:class => "span7 positive-integer"}
         %h5 募集期間
-        %input.number.span6
-        %h5 募集締め切り(入力フォームの提案です)
-        = f.input :deadline ,:label => false, as: :ui_date_picker
+        = f.input :deadline,:label => false, :input_html => {:class => "span6 positive-integer"}
+        %h5 募集開始を希望する日時
+        = f.input :start_day ,:label => false, as: :ui_date_picker
 
         %h5 クリエイター情報(審査段階で利用させて頂きます)
         .inline
@@ -40,6 +42,12 @@
             Webサイト
           .span10
             = f.url_field :web_site, :class => "span5"
+        .span4
+        .span4
+          #go-top
+            %button.btn.btn-inverse.btn-large 戻る
+            = f.submit "次のページへ", :class => "btn btn-success btn-large", :id => "nextButton-new"
+        .span4
 
 
     .span4.well
@@ -71,15 +79,6 @@
           達成率
           %strong
             52%
-
-  .row-fluid
-    .span8
-      .span4
-      .span4
-        %button.btn.btn-inverse.btn-large 戻る
-        %button.btn.btn-success.btn-large#nextButton-new 次のページへ
-      .span4
-    .span4
 
 #new_page_2
   .row-fluid
