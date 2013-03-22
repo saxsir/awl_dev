@@ -8,7 +8,7 @@
       - if project.slideshow?
         %h3= project.title
         %p= project.headline
-        %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
+        = image_tag project.image.url(:thumb), :alt => project.title
 
     #grid
       - @projects.each do |project|

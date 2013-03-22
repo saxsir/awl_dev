@@ -41,7 +41,7 @@
                   .span4.left-content
                     %h3.project-title>
                       =project.title
-                    =image_tag('http://cambelt.co/150x150/Project+Image', :class => 'img-polaroid')
+                    = image_tag project.image.url(:mypage), :alt => project.title
                   .span8.right-content
                     .row-fluid
                       .span12
@@ -101,7 +101,9 @@
                 %p.editable#username= @user.username
                 %p.editable= "パスワード変更：未実装"
                 =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
-                %button.btn-success#fileLoader ファイルを選択
+                %br
+                #image-upload
+                  = file_field :users,:icon,:accept => "image/*"
               .span3.pull-right.well
                 %p#edit-subscription
                   「編集する」ボタンを押すと、ユーザー情報をクリックして編集可能になります！
@@ -128,6 +130,7 @@
                   = form_for @user do |f|
                     = f.hidden_field :email
                     = f.hidden_field :username
+                    = f.hidden_field :icon
                     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
                     = submit_tag "Save Changes", :class => "btn btn-primary", :id => "change-button"
 

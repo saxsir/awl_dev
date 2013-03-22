@@ -18,7 +18,7 @@
         .item
           = link_to project do
             /%img{:src => project.image_url, :alt =>project.title}
-            = image_tag('http://cambelt.co/1350x654/Sample+Image', :alt => project.title)
+            = image_tag project.image.url(:slideshow), :alt => project.title
           .carousel-caption
             %h4= project.title
             %p
@@ -40,7 +40,7 @@
       .span4
         %h4= project.title
         = link_to project do
-          %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
+          = image_tag project.image.url(:thumb), :alt => project.title
         %p
           目標金額:
           =project.target_amount
