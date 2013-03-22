@@ -4,25 +4,30 @@
 
 .row-fluid
   .span12
-    .span8.well
-      %h3 リワードの設定
+    .span8
+      .well
+        %h3 リワードの設定
 
-      = simple_form_for @reward, :remote => true, :url => save_new_reward_path, :method => :post do |f|
+        = simple_form_for @reward, :remote => true, :url => save_new_reward_path, :method => :post do |f|
 
-        %h4 金額
-        = f.input :amount, :label => false, :input_html => {:class => "span8"}
-        %h4 リワード内容
-        = f.input :description, :label => false, :input_html => {:class => "span8", :rows=> 3}
-        %h4 個数制限
-        = f.input :quantity_limit, :label => false,  :input_html => {:class => "span8"}
+          %h4 金額
+          = f.input :amount, :label => false, :input_html => {:class => "span8"}
+          %h4 リワード内容
+          = f.input :description, :label => false, :input_html => {:class => "span8", :rows=> 3}
+          %h4 個数制限
+          = f.input :quantity_limit, :label => false,  :input_html => {:class => "span8"}
 
-        %hr
+          %hr
 
-        .span4.offset4
-          = f.submit "リワードを追加する", :class => "strong btn btn-inverse"
+          .span4.offset4
+            = f.submit "リワードを追加する", :class => "strong btn btn-inverse"
+      .span4.offset4
+        = link_to "戻る", {:controller => "projects", :action => "reward" },:class=> "btn btn-large"
+        = link_to "この内容で提出する",{:controller => "projects", :action => "confirm_project" } ,:confirm=> "本当にこれで良いですか？",:class=> "btn btn-large btn-success"
 
     .span4.well
       %h4 リワードのプレビュー
       #reward-preview
         - @project.rewards.each do |reward|
           =reward_preview(reward)
+

@@ -3,29 +3,29 @@
   %h2.page-title<
     =@project.title
 .row-fluid
-  .span8.content
-    #project-image
-      =image_tag @project.image.url(:show)
-    #project-desc
-      %h4>
-        = "クリエイター名：" + @project.user.username
-      %p{"jg" => "jTruncSubstr", "jg:jTruncSubstr" => "length:140, moreText:'もっと見る', lessText:'閉じる', lessAni:0"}
-        = # 63文字 × 5行
-        プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-        プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-        プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-        プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-        プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明プロジェクトの説明
-      %hr
-    #partner
-      %h4>
-        パートナー
-      - @project.supports.each do |support|
-        - if support.completed?
-          .user-icon.span2
-            .comment{:title => support.comment, "data-toggle" => "tooltip"}
-              =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
-            %p= support.user.username if defined?(support.user.username)
+  .span8
+    .well
+      #project-image
+        =image_tag @project.image.url(:show)
+      #project-desc
+        %h4>
+          = "クリエイター名：" + @project.user.username
+        %p{"jg" => "jTruncSubstr", "jg:jTruncSubstr" => "length:140, moreText:'もっと見る', lessText:'閉じる', lessAni:0"}
+          = @project.description
+        %hr
+      #partner
+        %h4>
+          パートナー
+        - @project.supports.each do |support|
+          - if support.completed?
+            .user-icon.span2
+              .comment{:title => support.comment, "data-toggle" => "tooltip"}
+                =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
+              %p= support.user.username if defined?(support.user.username)
+
+    .span4.offset4
+      = link_to "戻る", {:controller => "projects", :action => "new" },:class=> "btn btn-large"
+      = link_to "次のページへ", @project,:class=> "btn btn-large btn-success"
   .span4.content#right
     .span12#amount
       .inline
