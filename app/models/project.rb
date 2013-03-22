@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   has_attached_file :image ,:styles => { :thumb => "400x300>" , :show => "800x300>", :slideshow => "1350x654>", :mypage => "160x160>"}
 
   validates:target_amount, :numericality => {:greater_than_or_equal_to => 1000}
-  #validates_uniqueness_of :title
-  #validates_presence_of :target_amount,:headline,:description,:deadline
+  validates_uniqueness_of :title
+  validates_presence_of :target_amount,:headline,:description,:deadline, :start_day, :image, :title
 
 end
