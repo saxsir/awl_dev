@@ -53,7 +53,6 @@ class ProjectsController < ApplicationController
 
       respond_to do |format|
         format.html # new.html.erb
-        format.json { render json: @project }
       end
     end
   end
@@ -74,19 +73,21 @@ class ProjectsController < ApplicationController
     @project.total_amount = 0
     @project.state = "new"
 
-    if @project.save
-      redirect_to :action => "reward", :id => @project.id
-    else
-      respond_to do |format|
-        format.html { render action: "new" }
+    respond_to do |format|
+      if @project.save
+        format.html { render :action =>  "reward" , :project_id => @project.id }
+      else
+        format.html { render :action =>  "new" }
       end
     end
   end
 
   # GET /projects/new/rewards
   def reward
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:project_id])
     @reward = Reward.new
+
+    puts "reward is #{@reward}"
 
     respond_to do |format|
 
