@@ -32,7 +32,7 @@
                   .span4.left-content
                     %h3.project-title>
                       =project.title
-                    =image_tag('http://cambelt.co/200x200/Project+Image', :class => 'img-polaroid')
+                    = image_tag project.image.url(:mypage), :alt => project.title
                   .span8.right-content
                     .row-fluid
                       .span12

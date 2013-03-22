@@ -31,6 +31,7 @@ $(document).ready ->
     $("#fileLoader").show("blind",10)
     $("#edit-button").hide("blind",10)
     $("#save-button").show("blind",10)
+    $("#image-upload").show("blind",10)
     $("#edit-subscription").text("編集が終了したら「保存する」ボタンを押して下さい！")
     $("#profile-image-subscription").text("アイコンは画像ファイルをドラッグ&ドロップすることでもアップロード出来ます。")
 	  # マイページ編集をWYSIWYGに
@@ -49,6 +50,7 @@ $(document).ready ->
     $("#fileLoader").hide("blind",10)
     $("#save-button").hide("blind",10)
     $("#edit-button").show("blind",10)
+    $("#image-upload").hide("blind",10)
     $("#edit-subscription").text("「編集する」ボタンを押すと、ユーザー情報をクリックして編集可能になります！")
     $("#profile-image-subscription").text("")
     # マイページ編集をWYSIWYGに

@@ -5,7 +5,7 @@
 .row-fluid
   .span8.content
     #project-image
-      =image_tag('http://cambelt.co/800x300/Project+Image')
+      =image_tag @project.image.url(:show)
     #project-desc
       %h4>
         = "クリエイター名：" + @project.user.username
