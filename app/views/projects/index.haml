@@ -8,14 +8,14 @@
       - if project.slideshow?
         %h3= project.title
         %p= project.headline
-        = image_tag project.image.url(:thumb), :alt => project.title
+
 
     #grid
       - @projects.each do |project|
         .item
           %h4= project.title
           = link_to project do
-            %img{:src => project.image_url, :alt => "#{project.title}", :class => "img-polaroid"}
+            = image_tag project.image.url(:thumb), :alt => project.title
           %p
             目標金額:
             =project.target_amount
