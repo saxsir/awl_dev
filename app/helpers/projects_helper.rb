@@ -32,7 +32,6 @@ module ProjectsHelper
     render :inline => <<-HAML, :type => :haml, :locals => {:reward => reward}
 .span12.rewards.well{:id => "reward#{reward.id}"}
   %h4= "¥#{reward.amount} 支援すると"
-  = link_to "削除", {:controller => "projects", :action => "destroy_reward_ajax", :project_id => reward.project_id,:reward_id => reward.id,:method => :delete},:remote => true, :class=> "destroy-reward btn btn-small pull-right btn-inverse"
   %br
   %p= reward.description
   %br
