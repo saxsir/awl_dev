@@ -37,21 +37,33 @@
                 %span.icon-bar
               .nav-collapse
                 %ul.nav.pull-right
-                  %li>
-                    = link_to image_tag('About.png'), about_path
-                  %li>
-                    = link_to image_tag('Project.png'), projects_path
+                  %li
+                    .icon.about
+                      - #空div
+                    = link_to('About', about_path)
+                  %li
+                    .icon.project
+                      - #空div
+                    = link_to('Project', projects_path)
                   -if user_signed_in?
-                    %li>
-                      = link_to 'Mypage', mypage_index_path(:username => current_user.username)
-                    %li#last>
-                      = link_to 'Logout', destroy_user_session_path, :method => :delete
+                    %li
+                      .icon.mypage
+                        - #空div
+                      = link_to('MyPage', mypage_index_path(:username => current_user.username))
+                    %li#last
+                      .icon.login-out
+                        - #空div
+                      = link_to('Logout', destroy_user_session_path, :method => :delete)
                   -else
-                    %li>
+                    %li
+                      .icon.login-out
+                        - #空div
                       %a#nav_login_home{"data-toggle" => "popover"}
-                        = image_tag('Log-in.png')
-                    %li#last>
-                      = link_to image_tag('Sign-up.png'), new_user_registration_path
+                        Login
+                    %li#last
+                      .icon.signup
+                        - #空div
+                      = link_to('Signup', new_user_registration_path)
 
     .container.main
       = yield
