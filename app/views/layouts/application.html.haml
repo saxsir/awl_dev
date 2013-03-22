@@ -21,30 +21,30 @@
               .nav-collapse
                 %ul.nav.pull-right
                   %li
-                    .icon.about
+                    .icon.about-icon
                       - #空div
                     = link_to('About', about_path)
                   %li
-                    .icon.project
+                    .icon.project-icon
                       - #空div
                     = link_to('Project', projects_path)
                   -if user_signed_in?
                     %li
-                      .icon.mypage
+                      .icon.mypage-icon
                         - #空div
                       = link_to('MyPage', mypage_index_path(:username => current_user.username))
                     %li#last>
-                      .icon.login-out
+                      .icon.login-out-icon
                         - #空div
                       = link_to('Logout', destroy_user_session_path, :method => :delete)
                   -else
                     %li
-                      .icon.login-out
+                      .icon.login-out-icon
                         - #空div
                       %a#nav_login_home{"data-toggle" => "popover"}
                         Login
                     %li#last>
-                      .icon.signup
+                      .icon.signup-icon
                         - #空div
                       = link_to('Signup', new_user_registration_path)
     = yield :page_title
