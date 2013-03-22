@@ -47,11 +47,11 @@ body { /* Add top padding for full-width layout */
           margin-bottom: -31px;
         }
         /* CSS Sprite */
-        .about { width: 15px; background: url(icon/icon-sprite.png) 0px 0px no-repeat; margin-left: 26px;}
-        .login-out { width: 21px; background: url(icon/icon-sprite.png) -15px 0px no-repeat; margin-left: 21px;}
-        .mypage { width: 19px; background: url(icon/icon-sprite.png) -36px 0px no-repeat; margin-left: 22px;}
-        .project { width: 20px; background: url(icon/icon-sprite.png) -55px 0px no-repeat; margin-left: 22px;}
-        .signup { width: 27px; background: url(icon/icon-sprite.png) -75px 0px no-repeat; margin-left: 22px;}
+        .about-icon { width: 15px; background: url(icon/icon-sprite.png) 0px 0px no-repeat; margin-left: 26px;}
+        .login-out-icon { width: 21px; background: url(icon/icon-sprite.png) -15px 0px no-repeat; margin-left: 21px;}
+        .mypage-icon { width: 19px; background: url(icon/icon-sprite.png) -36px 0px no-repeat; margin-left: 22px;}
+        .project-icon { width: 20px; background: url(icon/icon-sprite.png) -55px 0px no-repeat; margin-left: 22px;}
+        .signup-icon { width: 27px; background: url(icon/icon-sprite.png) -75px 0px no-repeat; margin-left: 22px;}
       }
       li#last{
         border-left: 1px solid #e6e6e6;
