@@ -23,9 +23,10 @@
                 =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
               %p= support.user.username if defined?(support.user.username)
 
-    .span4.offset4
-      = link_to "戻る", {:controller => "projects", :action => "new" },:class=> "btn btn-large"
-      = link_to "次のページへ", @project,:class=> "btn btn-large btn-success"
+    - if @project.state == "new"
+      .span8.offset3
+        = link_to "戻る", {:controller => "projects", :action => "reward",:project_id => @project.id },:class=> "btn btn-large"
+        = link_to "この内容で提出する", {:controller => "projects", :action => "confirm_project" },:class=> "btn btn-large btn-success"
   .span4.content#right
     .span12#amount
       .inline

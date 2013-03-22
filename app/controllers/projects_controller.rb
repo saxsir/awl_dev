@@ -18,6 +18,16 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
+    if @project.state == "new"
+      if current_user.id != @project.user_id
+        redirect_to root_path
+      end
+    end
+
+    if @project.state == "examinate"
+      redirect_to root_path
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
@@ -129,7 +139,6 @@ class ProjectsController < ApplicationController
 
   def destroy_reward_ajax
     @reward = Reward.find(params[:reward_id])
-    puts "reward:#{@reward}"
     #ajaxのcallbackに渡してあげたい。上手く行ったらviewを操作するので
     @reward.destroy
 

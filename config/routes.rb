@@ -26,6 +26,7 @@ AwlDev::Application.routes.draw do
   get 'projects/:project_id/reward/new' => 'projects#reward'
   post 'projects/:project_id/reward/new' => 'projects#save_reward_ajax', :as => 'save_new_reward'
   delete 'projects/:project_id/reward/destroy/:reward_id' => 'projects#destroy_reward_ajax', :as => 'destory_reward'
+  get 'projects/:id/confirm' => 'projects#confirm_project'
   resources :projects
 
   resources :users, :only => [:edit, :update]

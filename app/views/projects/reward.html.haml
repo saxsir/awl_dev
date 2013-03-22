@@ -22,8 +22,8 @@
           .span4.offset4
             = f.submit "リワードを追加する", :class => "strong btn btn-inverse"
       .span4.offset4
-        = link_to "戻る", {:controller => "projects", :action => "reward" },:class=> "btn btn-large"
-        = link_to "この内容で提出する",{:controller => "projects", :action => "confirm_project" } ,:confirm=> "本当にこれで良いですか？",:class=> "btn btn-large btn-success"
+        = link_to "戻る", {:controller => "projects", :action => "new" },:class=> "btn btn-large"
+        = link_to "次のページへ", @project,:class=> "btn btn-large btn-success"
 
     .span4.well
       %h4 リワードのプレビュー
