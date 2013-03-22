@@ -6,9 +6,8 @@
   .span12
     .span8.well
       %h3 リワードの設定
-      = @project.title
 
-      = form_for @reward do |f|
+      = simple_form_for @reward, :remote => true, :url => save_new_reward_path, :method => :post do |f|
 
         %h4 金額
         = f.input :amount, :label => false, :input_html => {:class => "span8"}
@@ -20,8 +19,10 @@
         %hr
 
         .span4.offset4
-          %h3 リワードを追加する
-
-
+          = f.submit "リワードを追加する", :class => "strong btn btn-inverse"
 
     .span4.well
+      %h4 リワードのプレビュー
+      #reward-preview
+        - @project.rewards.each do |reward|
+          =reward_preview(reward)

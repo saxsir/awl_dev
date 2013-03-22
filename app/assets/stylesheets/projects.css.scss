@@ -128,4 +128,25 @@ body#project-new
     -webkit-border-radius: 0px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 0px;   /* Firefox用 */
   }
+   #rewards {
+      padding:3%;
+    }
+
+    #reward-partner{
+      border-style: solid;
+      border-width:thin;
+      text-align:center;
+      padding:10px;
+      margin-left:45%;
+      margin-right:5%;
+    }
+
+    #button-support{
+      text-align:center;
+      width:100%;
+      color:white;
+      padding:5%;
+      background-color:rgb(63,129,97);
+
+    }
 }

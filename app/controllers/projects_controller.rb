@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 class ProjectsController < ApplicationController
+
   before_filter :authenticate_user!, :only => :new
   # GET /projects
   # GET /projects.json
@@ -57,10 +59,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+
+  #edit機能を停止してる
+  "
    # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
   end
+  "
 
  # POST /projects
   # POST /projects.json
@@ -73,10 +79,10 @@ class ProjectsController < ApplicationController
     @project.total_amount = 0
     @project.state = "new"
 
-    respond_to do |format|
-      if @project.save
-        format.html { render :action =>  "reward" , :project_id => @project.id }
-      else
+    if @project.save
+      redirect_to :action => "reward", :project_id => @project.id
+    else
+      respond_to do |format|
         format.html { render :action =>  "new" }
       end
     end
@@ -85,23 +91,66 @@ class ProjectsController < ApplicationController
   # GET /projects/new/rewards
   def reward
     @project = Project.find(params[:project_id])
+
+    #直にURLタイプして飛んでこれてしまうのでバリデーション
+    if current_user.id != @project.user_id
+      redirect_to root_path, :notice => "Permission Error: This Project is not made by you!"
+    end
+
+    if @project.state != "new" then
+      redirect_to root_path, :notice => "Permission Error: This Project is not in the time Editable"
+    end
+
     @reward = Reward.new
-
-    puts "reward is #{@reward}"
-
     respond_to do |format|
-
-      #rewardも正常にsaveされたら、とりあえずそのまま
-      # rewardの作成でfailedするかsessionが切れたら、@projectもdeleteする。
-
-
       format.html # reward.html.haml
       #format.json { render json: @project }
       #format.json { render json: @reward }
     end
   end
 
-  def save_reward
+
+  def save_reward_ajax
+    @reward = Reward.new(params[:reward])
+
+    @reward.project_id = params[:project_id]
+    #ajaxのcallbackに渡してあげたい。上手く行ったらviewを操作するので
+    if @reward.save
+      #jsになんか命令飛ばせると思う
+    else
+      @reward.destroy
+    end
+
+    preview_html = ApplicationController.helpers.reward_preview_ajax(@reward)
+    #render :json => { :html => preview_html }
+    render :text => preview_html
+
+  end
+
+  def destroy_reward_ajax
+    reward = Reward.new(params[:reward])
+
+    #ajaxのcallbackに渡してあげたい。上手く行ったらviewを操作するので
+    if reward.destroy
+
+    else
+
+    end
+  end
+
+  #作成ページ３でOK押した時
+  def confirm_project
+    @project  = Project.find(params[:id])
+    #あとrewardも（state次第で全部)goingにしなきゃいけないけど・・・
+
+    @project.state = "examinate"
+
+    #どっちにしろ戻る
+    if @project.save
+      redirect_to root_path, :notice => "Success!"
+    else
+      redirect_to root_path, :notice => "Error!"
+    end
 
   end
 

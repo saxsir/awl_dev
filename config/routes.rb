@@ -23,7 +23,8 @@ AwlDev::Application.routes.draw do
   # thanksを上に書かないと、show/:id とコンフリクトする
   get 'projects/thanks' => 'projects#thanks'
   get 'projects/:id/procedure' => 'projects#procedure'
-  get 'projects/new/reward' => 'projects#reward'
+  get 'projects/:project_id/reward/new' => 'projects#reward'
+  post 'projects/:project_id/reward' => 'projects#save_reward_ajax', :as => 'save_new_reward'
   resources :projects
 
   resources :users, :only => [:edit, :update]
