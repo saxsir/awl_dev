@@ -17,12 +17,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-
-    if @project.state == "new"
-      if current_user.id != @project.user_id
-        redirect_to root_path
-      end
-    end
+      #if @project.state == "new"
+       # if current_user.id != @project.user_id
+        #  redirect_to root_path
+        #end
+      #end
 
     if @project.state == "examinate"
       redirect_to root_path
