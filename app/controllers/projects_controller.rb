@@ -128,14 +128,12 @@ class ProjectsController < ApplicationController
   end
 
   def destroy_reward_ajax
-    reward = Reward.new(params[:reward])
-
+    @reward = Reward.find(params[:reward_id])
+    puts "reward:#{@reward}"
     #ajaxのcallbackに渡してあげたい。上手く行ったらviewを操作するので
-    if reward.destroy
+    @reward.destroy
 
-    else
-
-    end
+    render :text => params[:reward_id]
   end
 
   #作成ページ３でOK押した時

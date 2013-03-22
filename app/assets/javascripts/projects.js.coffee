@@ -21,6 +21,9 @@ jQuery ->
 $ ->
 	$("#new_reward").live "ajax:complete",(events,data) ->
 		$(data.responseText).prependTo("#reward-preview").fadeIn('slow')
+	$(".destroy-reward").live "ajax:complete",(events,data) ->
+		$("#reward"+data.responseText).fadeOut('slow')
+
 
 
 #newのシングルページ実装
