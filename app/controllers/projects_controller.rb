@@ -97,7 +97,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/new/rewards
+  # GET /projects/:id/reward/new
   def reward
     @project = Project.find(params[:project_id])
 

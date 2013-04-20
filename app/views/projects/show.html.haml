@@ -22,8 +22,7 @@
               .comment{:title => support.comment, "data-toggle" => "tooltip"}
                 =image_tag('http://cambelt.co/80x80/User+Icon', :class => 'img-polaroid')
               %p= support.user.username if defined?(support.user.username)
-
-    - if @project.state == "new"
+    - if @project.state == "new" && current_user == @project.user
       .span8.offset3
         = link_to "戻る", {:controller => "projects", :action => "reward",:project_id => @project.id },:class=> "btn btn-large"
         = link_to "この内容で提出する", {:controller => "projects", :action => "confirm_project" },:class=> "btn btn-large btn-success"
@@ -69,6 +68,6 @@
         %br
         #reward-partner
           = image_tag('projects/Partner.png')
-          %strong= "#{reward.support.length}/#{reward.quantity_limit} Partner"
+          %strong= "#{reward.supports.find(:all, :conditions => {:completed => true}).length}/#{reward.quantity_limit} Partner"
         %br
 

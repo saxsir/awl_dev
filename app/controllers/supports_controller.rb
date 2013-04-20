@@ -30,6 +30,12 @@ class SupportsController < ApplicationController
   def success
     support = Support.find_by_token! params[:token]
     support.complete!(params[:PayerID])
+
+    # ここでsupport金額をprojectにいれる？
+    project = support.project
+    project.total_amount += support.amount
+    project.save!
+
     flash[:notice] = 'Paypal Transaction Completed'
     redirect_to project_url(support.project_id)
   end

@@ -25,7 +25,7 @@ module ProjectsHelper
   %br
   #reward-partner
     = image_tag('projects/Partner.png')
-    %strong= "#{reward.support.length}/#{reward.quantity_limit} Partner"
+    %strong= "#{reward.supports.length}/#{reward.quantity_limit} Partner"
   HAML
   end
   def reward_preview_ajax(reward)
@@ -37,7 +37,7 @@ module ProjectsHelper
   %br
   #reward-partner
     = image_tag('projects/Partner.png')
-    %strong= "#{reward.support.length}/#{reward.quantity_limit} Partner"
+    %strong= "#{reward.supports.length}/#{reward.quantity_limit} Partner"
   HAML
   end
 end
